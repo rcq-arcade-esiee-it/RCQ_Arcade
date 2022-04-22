@@ -38,7 +38,7 @@ jobs:
           testMode: playmode
           customParameters: -debugCodeOptimization -enableCodeCoverage -coverageResultsPath ./coverage-results -coverageOptions generateAdditionalMetrics
       - name: ls
-        run: "ls /home/runner/work/RCQ_Arcade/RCQ_Arcade/CodeCoverage/ "
+        run: "ls /home/runner/work/RCQ_Arcade/RCQ_Arcade/CodeCoverage/workspace-opencov/PlayMode/ "
       - name: Upload XML report to Codecov
         uses: codecov/codecov-action@v2
         with:
