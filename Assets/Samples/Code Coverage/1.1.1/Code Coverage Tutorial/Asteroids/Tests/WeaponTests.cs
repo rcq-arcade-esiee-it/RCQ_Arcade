@@ -32,7 +32,7 @@ public class WeaponTests
         }
     }
 
-/*
+
     // Uncomment the code from line 35 up to line 237, run the tests again and compare the code coverage results
 
     [Test]
@@ -234,5 +234,5 @@ public class WeaponTests
         // LaserController laser = Object.FindObjectOfType<LaserController>();
         // Assert.NotNull(laser);
     }
-*/
+
 }
