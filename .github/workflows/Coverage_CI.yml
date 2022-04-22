@@ -38,13 +38,7 @@ jobs:
           testMode: playmode
           customParameters: -debugCodeOptimization -enableCodeCoverage -coverageResultsPath ./coverage-results -coverageOptions generateAdditionalMetrics
       - name: ls
-        run: "ls /home/runner/work/RCQ_Arcade/RCQ_Arcade/CodeCoverage/workspace-opencov/PlayMode/ "
-      - name: ls1
-        run: "ls /home/runner/work/RCQ_Arcade/RCQ_Arcade/ "
-      - name: ls2
-        run: "ls /home/runner/work/RCQ_Arcade/RCQ_Arcade/CodeCoverage/ "
-      - name: ls3
-        run: "ls /home/runner/work/RCQ_Arcade/RCQ_Arcade/coverage-results "
+        run: "ls /home/runner/work/RCQ_Arcade/RCQ_Arcade/CodeCoverage/workspace-opencov/ "
       - name: ls4
         run: "ls /home/runner/work/RCQ_Arcade/RCQ_Arcade "
       - name: ls5
