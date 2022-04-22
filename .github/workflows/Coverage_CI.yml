@@ -43,4 +43,4 @@ jobs:
            name: PlayMode
            flags: automated
            token: ${{ secrets.CODECOV_TOKEN }}
-           files: /home/runner/work/RCQ_Arcade/RCQ_Arcade/CodeCoverage/workspace-opencov/PlayMode/TestCoverageResults_0000.xml, /home/runner/work/RCQ_Arcade/RCQ_Arcade/CodeCoverage/Report/**/*.xml
+           files: coverage-results/**/*.xml
