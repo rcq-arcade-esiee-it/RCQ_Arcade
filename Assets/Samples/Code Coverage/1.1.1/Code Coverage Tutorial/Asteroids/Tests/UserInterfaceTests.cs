@@ -125,25 +125,7 @@ public class UserInterfaceTests
         Assert.IsTrue(Time.timeScale == 1.0f);
     }
 
-    [UnityTest]
-    public IEnumerator _06_InGameScoreCounterChangesWhenScoreChanges()
-    {
-        EditorSceneManager.LoadSceneInPlayMode(asteroidsScenePath, loadSceneParameters);
-        
-        yield return null;
-
-        Assert.NotNull(GameObject.Find("InGameMenu"));
-        Canvas canvas = GameObject.Find("InGameMenu").GetComponent<Canvas>();
-
-        Assert.NotNull(canvas.transform.GetChild(1));
-        Text[] numbers = canvas.transform.GetChild(1).GetComponentsInChildren<Text>();
-        Assert.IsTrue(numbers.Length == 7);         
-        GameManager.AddToScore(0);
-
-        yield return new WaitForSeconds(0.5f);
-
-        Assert.IsTrue(numbers[0].text == "0" && numbers[1].text == "0" && numbers[2].text == "0" && numbers[3].text == "1" && numbers[4].text == "0" && numbers[5].text == "0" && numbers[6].text == "0");
-    }
+  
 
     [UnityTest]
     public IEnumerator _07_InGameMenuLivesControllerPlaysAnimationsWhenLifeCountIsChanged()
