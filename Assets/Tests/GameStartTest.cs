@@ -1,5 +1,6 @@
 using System.Collections;
 using NUnit.Framework;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -7,12 +8,14 @@ using UnityEngine.TestTools;
 
 public class Please : InputTestFixture
 {
+    private TextMeshProUGUI _textMeshProUGUI;
     private Keyboard keyboard;
 
     public override void Setup()
     {
         base.Setup();
         SceneManager.LoadScene("Scenes/MainScreen");
+        
 
         keyboard = InputSystem.AddDevice<Keyboard>();
         Debug.Log(keyboard);
@@ -33,13 +36,12 @@ public class Please : InputTestFixture
         Assert.That(sceneName, Is.EqualTo("GameMenu"));
     }
 
-    /*[UnityTest]
+    [UnityTest]
     public IEnumerator TestGameStart_texte_devrait_clignoter()
     {
-        var firstColor = SceneManager.GetActiveScene().name;
+        _textMeshProUGUI = GameObject.Find("Canvas/TextTypeStart").GetComponent<TextMeshProUGUI>();
+        var firstColor = _textMeshProUGUI.color;
         yield return new WaitForSeconds(2f);
-        Assert.That(firstColor, Is.Not.EqualTo("MainScreen"));
-      
-
-    }*/
+        Assert.That(firstColor, Is.Not.EqualTo(_textMeshProUGUI.color));
+    }
 }
