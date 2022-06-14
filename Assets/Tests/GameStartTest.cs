@@ -22,7 +22,16 @@ public class Please : InputTestFixture
     }
 
     [UnityTest]
-    public IEnumerator TestGameStart()
+    public IEnumerator TestGameStart_texte_devrait_clignoter()
+    {
+        _textMeshProUGUI = GameObject.Find("MainCanvas/TextTypeStart").GetComponent<TextMeshProUGUI>();
+        var firstColor = _textMeshProUGUI.color;
+        yield return new WaitForSeconds(2f);
+        Assert.That(firstColor, Is.Not.EqualTo(_textMeshProUGUI.color));
+    }
+
+    [UnityTest]
+    public IEnumerator TestGameStart_devrait_changer_decran_touche()
     {
         var sceneName = SceneManager.GetActiveScene().name;
         Debug.Log(SceneManager.GetActiveScene().path);
@@ -34,14 +43,5 @@ public class Please : InputTestFixture
 
         sceneName = SceneManager.GetActiveScene().name;
         Assert.That(sceneName, Is.EqualTo("GameMenu"));
-    }
-
-    [UnityTest]
-    public IEnumerator TestGameStart_texte_devrait_clignoter()
-    {
-        _textMeshProUGUI = GameObject.Find("Canvas/TextTypeStart").GetComponent<TextMeshProUGUI>();
-        var firstColor = _textMeshProUGUI.color;
-        yield return new WaitForSeconds(2f);
-        Assert.That(firstColor, Is.Not.EqualTo(_textMeshProUGUI.color));
     }
 }
