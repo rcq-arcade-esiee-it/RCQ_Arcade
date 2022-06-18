@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 using UnityEngine.SceneManagement;
 
 public class MainGameScript : MonoBehaviour
@@ -14,6 +13,8 @@ public class MainGameScript : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        // InputSystem.onAnyButtonPress
+        //     .CallOnce(ctrl => Invoke("ChangeMenu", 1));
         audioWhistle = GetComponent<AudioSource>();
     }
 

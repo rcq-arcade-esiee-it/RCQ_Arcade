@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 179445808}
   - component: {fileID: 179445807}
   m_Layer: 5
-  m_Name: JEU 4
+  m_Name: JEU_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 482280073}
   - component: {fileID: 482280074}
   m_Layer: 5
-  m_Name: JEU 1
+  m_Name: JEU_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,7 +594,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 482280071}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -2216082554243798361, guid: dafa790871d87204fa0738b06335a3c0, type: 3}
+        m_TargetAssemblyTypeName: GameManager, RCQ_Arcade
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Game1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &482280071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,8 +985,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282993098
-  m_fontColor: {r: 0.7921569, g: 0.28627452, b: 0.28627452, a: 1}
+    rgba: 4281085120
+  m_fontColor: {r: 0.7529412, g: 0.17254902, b: 0.17254902, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1537,7 +1549,7 @@ GameObject:
   - component: {fileID: 1602905802}
   - component: {fileID: 1602905801}
   m_Layer: 5
-  m_Name: JEU 3
+  m_Name: JEU_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1904,7 +1916,7 @@ GameObject:
   - component: {fileID: 1790886183}
   - component: {fileID: 1790886184}
   m_Layer: 5
-  m_Name: JEU 2
+  m_Name: JEU_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2265,7 +2277,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2045262675011921022, guid: 2153688af9af7c94ab5322c29befa04e, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: MainCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 5674142680880002419, guid: 2153688af9af7c94ab5322c29befa04e, type: 3}
       propertyPath: m_Pivot.x

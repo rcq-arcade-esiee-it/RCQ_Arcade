@@ -2,15 +2,23 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static GameManager instance;
+    public GameObject faderObj;
+    public Image faderImg;
+    public float fadeSpeed = .02f;
+    private readonly Color fadeTransparency = new(0, 0, 0, .04f);
     private AsyncOperation async;
+
     private bool isReturning;
 
-    public string CurrentSceneName { get; private set; }
+
+    // Get the current scene name
+    public string CurrentSceneName { get; set; }
 
     private void Awake()
     {
@@ -24,6 +32,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Cursor.visible = true;
     }
 
     private void Start()
@@ -33,13 +43,13 @@ public class GameManager : MonoBehaviour
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         CurrentSceneName = scene.name;
-        //instance.StartCoroutine(FadeIn(instance.faderObj, instance.faderImg));
+        instance.StartCoroutine(FadeIn(instance.faderObj, instance.faderImg));
     }
-
 
     public void LoadScene(string sceneName)
     {
         instance.StartCoroutine(Load(sceneName));
+        instance.StartCoroutine(FadeOut(instance.faderObj, instance.faderImg));
     }
 
     public void ReloadScene()
@@ -56,10 +66,32 @@ public class GameManager : MonoBehaviour
         isReturning = false;
     }
 
-    // Allows the scene to change once it is loaded
     public void ActivateScene()
     {
         async.allowSceneActivation = true;
+    }
+
+    private IEnumerator FadeOut(GameObject faderObject, Image fader)
+    {
+        faderObject.SetActive(true);
+        while (fader.color.a < 1)
+        {
+            fader.color += fadeTransparency;
+            yield return new WaitForSeconds(fadeSpeed);
+        }
+
+        ActivateScene(); //Activate the scene when the fade ends
+    }
+
+    private IEnumerator FadeIn(GameObject faderObject, Image fader)
+    {
+        while (fader.color.a > 0)
+        {
+            fader.color -= fadeTransparency;
+            yield return new WaitForSeconds(fadeSpeed);
+        }
+
+        faderObject.SetActive(false);
     }
 
     public void ExitGame()
