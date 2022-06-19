@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
-public class GameFirstStartTest : InputTestFixture
+public class AGameFirstStartTest : InputTestFixture
 {
     private TextMeshProUGUI _textMeshProUGUI;
     private Keyboard keyboard;

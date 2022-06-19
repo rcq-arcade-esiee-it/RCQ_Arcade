@@ -3,7 +3,10 @@ guid: 33055ca321e963449ae555843ab719ba
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - faderObj: {instanceID: 0}
+  - faderImg: {instanceID: 0}
+  - rugbyBallPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
