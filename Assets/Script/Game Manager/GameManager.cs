@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static GameManager instance;
+    public static bool ModeDeuxJoueur;
     public GameObject faderObj;
     public Image faderImg;
     public float fadeSpeed = .02f;
