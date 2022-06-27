@@ -1,48 +1,54 @@
-using TMPro;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
+using UnityEngine;
+using UnityEngine.UI;
 public class ChoosePlayerMenuScript : MonoBehaviour
 {
-    public Sprite soundOn;
-    public Sprite soundOff;
+    static int VarPlayer = 1;
+    public Image P1_image;
+    public Image P2_image;
+    public Sprite P1_1;
+    public Sprite P1_2;
+    public Sprite P2_1;
+    public Sprite P2_2;
     private AudioSource audio;
 
-    private void Update()
+
+
+    void Start ()
     {
-        if (Keyboard.current.qKey.wasPressedThisF1rame)
-        {
-            GameObject.Find("MainCanvas/" + buttonSelected("BT_P1")).GetComponent(Image);
 
-
-        }
-        else if (Keyboard.current.dKey.wasPressedThisFrale)
-        {
-
-        }
     }
 
 
-
-
-    private string buttonSelected(string name)
+    void ChangeImage()
     {
-        var returnedPanel = "";
-        switch (gameObject.name)
+        if (VarPlayer == 1)
         {
-            case "P1":
-                returnedPanel = "BT_P1";
-                break;
-            case "P2":
-                returnedPanel = "BT_P2";
+           
+            
+            
 
-                break;
-
-                return returnedPanel;
+        }
+        else if (VarPlayer == 2)
+        {
+            
+            
+        }
+    }
+    void Update () {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            VarPlayer = 1;
+            Debug.Log("Mode 1 joueur");
+            P1_image.sprite = P1_1;
+            P2_image.sprite = P2_2;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            VarPlayer = 2;
+            P1_image.sprite = P1_2;
+            P2_image.sprite = P2_1;
+            Debug.Log("Mode 2 joueurs");
         }
     }
 }
