@@ -1,43 +1,35 @@
-/*using TMPro;
+using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UI;
 
-public class UIMenuScript : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class ChoosePlayerMenuScript : MonoBehaviour
 {
+    public Sprite soundOn;
+    public Sprite soundOff;
     private AudioSource audio;
 
-    private void Start()
+    private void Update()
     {
-        InputSystem.onAnyButtonPress.CallOnce(control => Debug.Log(control));
-        audio = GetComponent<AudioSource>();
+        if (Keyboard.current.qKey.wasPressedThisF1rame)
+        {
+            GameObject.Find("MainCanvas/" + buttonSelected("BT_P1")).GetComponent(Image);
+
+
+        }
+        else if (Keyboard.current.dKey.wasPressedThisFrale)
+        {
+
+        }
     }
 
-    public void OnDeselect(BaseEventData eventData)
-    {
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(0, 0, 0, 255);
-
-        GameObject.Find("MainCanvas/" + panelSelected(gameObject.name)).GetComponent<Image>().color =
-            new Color32(255, 255, 255, 255);
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(290, 258);
-    }
 
 
-    public void OnSelect(BaseEventData eventData)
-    {
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(192, 44, 44, 255);
 
-
-        GameObject.Find("MainCanvas/" + panelSelected(gameObject.name)).GetComponent<Image>().color =
-            new Color32(192, 44, 44, 255);
-
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(268, 238);
-        audio.Play();
-    }
-
-    private string panelSelected(string name)
+    private string buttonSelected(string name)
     {
         var returnedPanel = "";
         switch (gameObject.name)
@@ -50,6 +42,7 @@ public class UIMenuScript : MonoBehaviour, ISelectHandler, IDeselectHandler
 
                 break;
 
-        return returnedPanel;
+                return returnedPanel;
+        }
     }
-}*/
+}

@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UI;
 
 public class UIMenuScript : MonoBehaviour, ISelectHandler, IDeselectHandler
