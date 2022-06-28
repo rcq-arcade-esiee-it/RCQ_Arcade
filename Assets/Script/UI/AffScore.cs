@@ -1,15 +1,47 @@
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO; 
 using System.Linq;
+using GluonGui.Dialog;
+using TMPro;
+using UnityEditor;
 using UnityEngine.UI;
 public class AffScore : MonoBehaviour
 {
+    //Application.dataPath + "/Script/UI/" + "score_jeu_un.txt"
+    public TextMeshProUGUI txt_score2;
     void Start()
     {
-	    string readFromFilePath = Application.dataPath + "/Script/UI/" + "score_jeu_un" + ".txt";
+         int varTemp = 0;
+        
+        string fileName = Application.dataPath + "/Script/UI/" + "score_jeu_un.txt";
+        TextReader reader;
+        reader = new  StreamReader(fileName);
+        string line;
+        while (true)
+        {
+            // lecture de la ligne
+            line=reader.ReadLine();
+            // si la ligne est vide on arrête
+            if (line==null) break;
+            // on affiche la ligne
+            Debug.Log(line);
+
+            if (varTemp == 1)
+            {
+                txt_score2.text = txt_score2.text + '\n' + line;
+            }
+            else
+            {
+                txt_score2.text = line;
+                varTemp++;
+            }
+        }
+        reader.Close();
     }
+
     void Update()
     {
         
