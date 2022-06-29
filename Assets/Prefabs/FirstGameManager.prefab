@@ -44,13 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a18a3a7a65c8a24093e70dbd46b35be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  partyFinished: 0
-  staunt: 0
-  time: 60
   playerPrefab: {fileID: 2822761943245621146, guid: 2895444dd51b7804b894fd194defb3ec, type: 3}
+  gameManagerPrefab: {fileID: 0}
   rugbyBallPrefab: {fileID: 8826489472049016286, guid: fb592c51e92276a459dc808ff4006982, type: 3}
   bombPrefab: {fileID: 2326428724471007433, guid: c45a4efdb4dccb84096fbd1dcc2878ec, type: 3}
   mainCanvasPrefab: {fileID: 2045262675011921022, guid: 2153688af9af7c94ab5322c29befa04e, type: 3}
+  partyFinished: 0
+  staunt: 0
+  time: 60
   ballSpawnDelay: 1
   ballSpawnTimer: 0

@@ -12,10 +12,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-[ExcludeFromCodeCoverage]
 
 public partial class @PlayerActions : IInputActionCollection2, IDisposable
 {

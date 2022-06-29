@@ -1,5 +1,11 @@
+using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
+// Classe représentant une partie du premier jeu. SIngleton qui se détruit si on cherche à l'instancier une nouvelle fois
 public class FirstGameManager : MonoBehaviour
 {
     // Values and methods for testing
@@ -13,21 +19,27 @@ public class FirstGameManager : MonoBehaviour
     public static FirstGameManager instance;
 
     public static Player player;
+        // Le score d'une partie
     public static int score;
 
 
     public GameObject playerPrefab;
+    public GameObject gameManagerPrefab;
     public GameObject rugbyBallPrefab;
+
     public GameObject bombPrefab;
     public GameObject mainCanvasPrefab;
     public bool partyFinished;
     public bool staunt;
-    public float time = 60;
+    public float time = 9;
     [HideInInspector] public float ballSpawnDelay = 1.0f;
     [HideInInspector] public float ballSpawnTimer;
+    private GameManager gameManager;
 
     private void Start()
     {
+        gameManager = Instantiate(gameManagerPrefab).GetComponent<GameManager>();
+
         if (startEnabled)
             player = Instantiate(playerPrefab, new Vector2(-3230, 363), Quaternion.identity)
                 .GetComponentInChildren<Player>();
@@ -46,7 +58,27 @@ public class FirstGameManager : MonoBehaviour
             UpdateTimers();
             if (ballSpawnTimer <= 0.0f && ballsEnabled && !rugbyBallPrefab.scene.IsValid()) SpawnRugbyBall();
             if (Random.Range(1, 2500) < 2) SpawnBomb();
-            if (time < 25) rugbyBallPrefab.GetComponentInChildren<Rigidbody2D>().gravityScale = Random.Range(300, 700);
+            if (time < 25) rugbyBallPrefab.GetComponentInChildren<Rigidbody2D>().gravityScale = 900000000000;
+        }
+        else
+        {
+            StartCoroutine(PartyEnd());
+        }
+    }
+
+    private IEnumerator PartyEnd()
+    {
+        
+        String text = "MEILLEUR JOUEUR";
+        if (score > 15)
+        {
+            GameObject textObj = GameObject.Find("BestScore");
+            textObj.SetActive(true);
+            textObj.GetComponent<TextMeshProUGUI>().text = text+  " JOUEUR I";
+            player.isWinner = true;
+            
+            yield return new WaitForSecondsRealtime(3);
+            SceneManager.LoadScene("Score");
         }
     }
 

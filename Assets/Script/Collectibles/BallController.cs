@@ -2,12 +2,8 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    private readonly Vector2 direction = Vector2.down;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
+  
 
     // Update is called once per frame
     private void Update()

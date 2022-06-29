@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private bool isReturning;
 
-    // TEst
+    // TEst>
     // Get the current scene name
     public string CurrentSceneName { get; set; }
 

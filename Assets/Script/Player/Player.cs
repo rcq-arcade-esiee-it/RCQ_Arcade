@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum PlayerState
 {
@@ -16,7 +17,13 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Animator animator;
     private PlayerActions playerActions;
+    private  bool winner;
 
+    public bool isWinner
+    {
+        get => winner;
+        set => winner = value;
+    }
     public float speedAccess
     {
         get => _speed;
@@ -40,16 +47,14 @@ public class Player : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-    }
+    // Update is called once per fram
 
     private void FixedUpdate()
     {
         _moveInput = playerActions.Player_Map.Movement.ReadValue<Vector2>();
         _moveInput.y = 0f;
         _rigidbody2D.velocity = _moveInput * _speed;
+        Debug.Log(_rigidbody2D.velocity);
         if (_moveInput != Vector2.zero)
         {
             animator.SetFloat("moveX", _moveInput.x);
@@ -60,7 +65,37 @@ public class Player : MonoBehaviour
             animator.SetBool("moving", false);
         }
 
-        if (FirstGameManager.instance.staunt) StartCoroutine(Staunt());
+        if (FirstGameManager.instance.partyFinished) StartCoroutine(Winner());
+
+        if (Keyboard.current.aKey.wasPressedThisFrame) StartCoroutine(Dash());
+
+
+
+        if (FirstGameManager.instance.staunt)StartCoroutine(Staunt());
+            
+    }
+
+    private IEnumerator Dash()
+    {
+        float m_Thrust = 20000f;
+        Debug.Log("DASH");
+        Debug.Log(transform.right*m_Thrust);
+
+        _rigidbody2D.AddForce(transform.right * m_Thrust); 
+        yield return null;
+    }
+
+    private IEnumerator Winner()
+    {
+        
+        Debug.Log(winner);
+        animator.SetBool("partyFinished", true);
+
+        animator.SetBool("winner", winner);
+        animator.SetBool("moving", false);
+
+        speedAccess = 0;
+        yield return new WaitForSeconds(2); //waits 1 seconds
     }
 
     private void OnEnable()
