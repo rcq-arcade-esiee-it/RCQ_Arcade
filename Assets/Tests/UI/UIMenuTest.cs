@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
-public class UIMenuTest : InputTestFixture
+public class CUIMenuTest : InputTestFixture
 {
     private string firstGameScenePath;
 

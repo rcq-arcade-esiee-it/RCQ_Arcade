@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
-public class GameManagerTest
+public class BGameManagerTest
 {
     private GameManager gameManager;
     private GameObject gameManagerPrefab;

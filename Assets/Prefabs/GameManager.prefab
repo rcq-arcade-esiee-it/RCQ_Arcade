@@ -322,3 +322,6 @@ MonoBehaviour:
   faderObj: {fileID: 2583364048873570886}
   faderImg: {fileID: 7656455241698454490}
   fadeSpeed: 0.02
+  score: 0
+  rugbyBallPrefab: {fileID: 8826489472049016286, guid: fb592c51e92276a459dc808ff4006982, type: 3}
+  time: 99

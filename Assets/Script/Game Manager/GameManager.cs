@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,12 +10,14 @@ public class GameManager : MonoBehaviour
     public GameObject faderObj;
     public Image faderImg;
     public float fadeSpeed = .02f;
+
+
     private readonly Color fadeTransparency = new(0, 0, 0, .04f);
     private AsyncOperation async;
 
     private bool isReturning;
 
-
+    // TEst>
     // Get the current scene name
     public string CurrentSceneName { get; set; }
 
@@ -52,10 +53,10 @@ public class GameManager : MonoBehaviour
         instance.StartCoroutine(FadeOut(instance.faderObj, instance.faderImg));
     }
 
-    public void ReloadScene()
-    {
-        LoadScene(SceneManager.GetActiveScene().name);
-    }
+    // public void ReloadScene()
+    // {
+    //     LoadScene(SceneManager.GetActiveScene().name);
+    // }
 
     // Begin loading a scene with a specified string asynchronously
     private IEnumerator Load(string sceneName)
@@ -94,30 +95,37 @@ public class GameManager : MonoBehaviour
         faderObject.SetActive(false);
     }
 
-    public void ExitGame()
-    {
-        // If we are running in a standalone build of the game
-#if UNITY_STANDALONE
-        // Quit the application
-        Application.Quit();
-#endif
+//     public void ExitGame()
+//     {
+//         // If we are running in a standalone build of the game
+// #if UNITY_STANDALONE
+//         // Quit the application
+//         Application.Quit();
+// #endif
+//
+//         // If we are running in the editor
+// #if UNITY_EDITOR
+//         // Stop playing the scene
+//         EditorApplication.isPlaying = false;
+// #endif
+//     }
 
-        // If we are running in the editor
-#if UNITY_EDITOR
-        // Stop playing the scene
-        EditorApplication.isPlaying = false;
-#endif
-    }
-
-    public void ReturnToMenu()
-    {
-        if (isReturning) return;
-
-        if (CurrentSceneName != "MenuGame")
-        {
-            StopAllCoroutines();
-            LoadScene("MenuGame");
-            isReturning = true;
-        }
-    }
+    // public void ReturnToMenu()
+    // {
+    //     if (isReturning) return;
+    //
+    //     if (CurrentSceneName != "MenuGame")
+    //     {
+    //         StopAllCoroutines();
+    //         LoadScene("MenuGame");
+    //         isReturning = true;
+    //     }
+    // }
+    //
+    // public void LoadSceneWithParameters(string sceneName, string jsonString)
+    // {
+    //     // ENvoyer un JSON
+    //     instance.StartCoroutine(Load(sceneName));
+    //     instance.StartCoroutine(FadeOut(instance.faderObj, instance.faderImg));
+    // }
 }
