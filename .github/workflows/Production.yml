@@ -52,4 +52,4 @@ jobs:
           destination-github-username: ' rcq-arcade-esiee-it'
           destination-repository-name: 'RCQ-ARCADE-PROD'
           user-email: sajous.davenese@gmail.com
-          target-branch: test
+          target-branch: main
