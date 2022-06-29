@@ -141,4 +141,24 @@ public class DFirstGameManagerTest
 
         yield return null;
     }
+    
+    [UnityTest]
+    public IEnumerator _06_FirstGameManagerPlayerWinIfScoreIs15()
+    {
+        ClearScene();
+        var player = Object.FindObjectOfType<Player>();
+        Object.Instantiate(firstGameManagerPrefab);
+        FirstGameManager.instance.time = 3;
+
+        FirstGameManager.score = 20;
+        yield return new WaitForSecondsRealtime(4);
+
+        Assert.IsFalse(FirstGameManager.instance.staunt);
+        Assert.IsTrue(FirstGameManager.instance.partyFinished);
+
+        Assert.IsTrue(player.speedAccess == 0);
+
+
+        yield return null;
+    }
 }

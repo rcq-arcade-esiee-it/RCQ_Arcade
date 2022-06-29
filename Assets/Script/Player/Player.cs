@@ -66,25 +66,11 @@ public class Player : MonoBehaviour
         }
 
         if (FirstGameManager.instance.partyFinished) StartCoroutine(Winner());
-
-        if (Keyboard.current.aKey.wasPressedThisFrame) StartCoroutine(Dash());
-
-
-
+        
         if (FirstGameManager.instance.staunt)StartCoroutine(Staunt());
             
     }
-
-    private IEnumerator Dash()
-    {
-        float m_Thrust = 20000f;
-        Debug.Log("DASH");
-        Debug.Log(transform.right*m_Thrust);
-
-        _rigidbody2D.AddForce(transform.right * m_Thrust); 
-        yield return null;
-    }
-
+    
     private IEnumerator Winner()
     {
         
