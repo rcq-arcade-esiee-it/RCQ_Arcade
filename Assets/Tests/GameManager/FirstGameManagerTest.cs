@@ -116,7 +116,6 @@ public class DFirstGameManagerTest
         yield return new WaitForSeconds(2);
 
         Assert.IsTrue(score != FirstGameManager.score);
-        Assert.IsTrue(FirstGameManager.score == 1);
 
         yield return null;
     }
