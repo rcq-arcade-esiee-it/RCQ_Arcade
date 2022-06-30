@@ -12,12 +12,16 @@ jobs:
     name: Build my project ✨
     runs-on: ubuntu-latest
     steps:
+      - name: Get repo
+
+        run: echo github.ref_name
+
       # Checkout
       - name: Checkout repository
         uses: actions/checkout@v2
+
         with:
           lfs: true
-          run: echo github.ref_name
 
       # Cache
       - uses: actions/cache@v2
