@@ -5,4 +5,4 @@ Matthieu
 Corentin
 Davenese
 
-Ajout d'une template globale
+Ajout d'une template globale a faire
