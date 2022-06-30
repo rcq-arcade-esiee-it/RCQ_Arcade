@@ -55,10 +55,10 @@ public class FirstGameManager : MonoBehaviour
     {
         if (!partyFinished)
         {
+            if (time <= 25) rugbyBallPrefab.GetComponentInChildren<Rigidbody2D>().gravityScale = 900000000000;
             UpdateTimers();
             if (ballSpawnTimer <= 0.0f && ballsEnabled && !rugbyBallPrefab.scene.IsValid()) SpawnRugbyBall();
             if (Random.Range(1, 2500) < 2) SpawnBomb();
-            if (time < 25) rugbyBallPrefab.GetComponentInChildren<Rigidbody2D>().gravityScale = 900000000000;
         }
         else
         {
