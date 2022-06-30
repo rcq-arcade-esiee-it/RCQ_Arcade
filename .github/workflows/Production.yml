@@ -11,13 +11,13 @@ jobs:
   build:
     name: Build my project ✨
     runs-on: ubuntu-latest
-    if: startsWith(github.ref_name, 'refs/heads/chore/')
     steps:
       # Checkout
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           lfs: true
+          run: echo github.ref_name
 
       # Cache
       - uses: actions/cache@v2
