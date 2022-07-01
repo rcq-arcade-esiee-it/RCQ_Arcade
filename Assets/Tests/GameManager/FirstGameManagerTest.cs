@@ -3,30 +3,36 @@ using NUnit.Framework;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
-public class DFirstGameManagerTest
+public class DFirstGameManagerTest : InputTestFixture
 {
     public GameObject bombPrefab;
 
     private GameObject firstGameManagerPrefab;
 
     private string firstGameScenePath;
+    private Keyboard keyboard;
 
     // Initialisation des composant prefab
     private GameObject gameManagerPrefab;
     private LoadSceneParameters loadSceneParameters;
-    public GameObject mainCanvasPrefab;
+    private GameObject mainCanvasPrefab;
+    
 
     private GameObject playerPrefab;
     public GameObject rugbyBallPrefab;
 
 
     // Start is called before the first frame update
-    [SetUp]
-    public void Setup()
+   
+    public override void Setup()
     {
+        base.Setup();
+        keyboard = InputSystem.AddDevice<Keyboard>();
+
         loadSceneParameters = new LoadSceneParameters(LoadSceneMode.Single, LocalPhysicsMode.None);
         var firstGameScene = ((GameObject)Resources.Load("TestsReferences")).GetComponent<TestsReferences>()
             .firstGameScene;
@@ -45,6 +51,8 @@ public class DFirstGameManagerTest
             .GetComponent<TestsReferences>().bombPrefab;
         mainCanvasPrefab = ((GameObject)Resources.Load("TestsReferences", typeof(GameObject)))
             .GetComponent<TestsReferences>().mainCanvasPrefab;
+        
+
     }
 
     //Enleve tout objet de la scene
@@ -116,11 +124,10 @@ public class DFirstGameManagerTest
         yield return new WaitForSeconds(2);
 
         Assert.IsTrue(score != FirstGameManager.score);
-        Assert.IsTrue(FirstGameManager.score == 1);
 
         yield return null;
     }
-
+    
     [UnityTest]
     public IEnumerator _05_FirstGameManagerPlayerIsStauntAfterTouchedByBomb()
     {
@@ -132,7 +139,7 @@ public class DFirstGameManagerTest
         var bomb = Object.Instantiate(bombPrefab, Vector3.zero, Quaternion.identity)
             .GetComponent<BombController>();
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
 
         Assert.IsFalse(FirstGameManager.instance.staunt);
 
@@ -157,6 +164,7 @@ public class DFirstGameManagerTest
         Assert.IsTrue(FirstGameManager.instance.partyFinished);
 
         Assert.IsTrue(player.speedAccess == 0);
+        yield return new WaitForSecondsRealtime(4);
 
 
         yield return null;

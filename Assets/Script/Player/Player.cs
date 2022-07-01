@@ -2,12 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum PlayerState
-{
-    walk,
-    idle
-}
-
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -54,7 +48,6 @@ public class Player : MonoBehaviour
         _moveInput = playerActions.Player_Map.Movement.ReadValue<Vector2>();
         _moveInput.y = 0f;
         _rigidbody2D.velocity = _moveInput * _speed;
-        Debug.Log(_rigidbody2D.velocity);
         if (_moveInput != Vector2.zero)
         {
             animator.SetFloat("moveX", _moveInput.x);
@@ -65,6 +58,8 @@ public class Player : MonoBehaviour
             animator.SetBool("moving", false);
         }
 
+
+            
         if (FirstGameManager.instance.partyFinished) StartCoroutine(Winner());
         
         if (FirstGameManager.instance.staunt)StartCoroutine(Staunt());
@@ -74,7 +69,6 @@ public class Player : MonoBehaviour
     private IEnumerator Winner()
     {
         
-        Debug.Log(winner);
         animator.SetBool("partyFinished", true);
 
         animator.SetBool("winner", winner);
@@ -102,7 +96,7 @@ public class Player : MonoBehaviour
         animator.SetBool("staunt", true);
         speedAccess = 0;
         yield return new WaitForSeconds(2); //waits 1 seconds
-        speedAccess = 3500;
+        speedAccess = 5000;
         animator.SetBool("staunt", false);
         _collider2D.enabled = !_collider2D.enabled;
     }

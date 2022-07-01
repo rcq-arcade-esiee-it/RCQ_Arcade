@@ -25,4 +25,11 @@ public class TestsReferences : MonoBehaviour
     public GameObject bombPrefab;
 
     #endregion
+    
+    #region Utilities
+
+    public GameObject teleportPrefab;
+    public GameObject teleportTargetPrefab;
+
+    #endregion
 }
