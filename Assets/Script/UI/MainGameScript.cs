@@ -3,22 +3,20 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+/// <summary>Class <c>MainGameScript</c> représentant la partie interaction avec le premier écran.</summary>
 public class MainGameScript : MonoBehaviour
 {
+    
     private AudioSource audioWhistle;
-
-    // Start is called before the first frame update
     private double timer;
 
     // Start is called before the first frame update
     private void Start()
     {
-        // InputSystem.onAnyButtonPress
-        //     .CallOnce(ctrl => Invoke("ChangeMenu", 1));
         audioWhistle = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
+    /// <summary>Cette méthode fais clignoter le texte et lance un audio lors du clique d'une touche </summary>
     private void Update()
     {
         blinkText();
@@ -42,6 +40,7 @@ public class MainGameScript : MonoBehaviour
             timer = 0;
         }
     }
+    /// <summary>Cette méthode permet  de changer de menu </summary>
 
     private void ChangeMenu()
     {

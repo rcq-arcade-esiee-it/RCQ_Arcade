@@ -4,15 +4,21 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
-
+/// <summary>Class <c>BGameManagerTest</c> representant une suite de tests devant êtres lancées dans un ordre précis.</summary>
 public class BGameManagerTest
 {
+    // Variables d'environnement de test
+
     private GameManager gameManager;
-    private GameObject gameManagerPrefab;
     private string gameMenuScenePath;
     private LoadSceneParameters loadSceneParameters;
     private string mainGameScenePath;
+    // Initialisation des composant prefab
 
+    private GameObject gameManagerPrefab;
+
+    /// <summary>Cette méthode met en place les différents prefabs et objets dont auront besoin les tests
+    /// </summary>   
     [SetUp]
     public void Setup()
     {

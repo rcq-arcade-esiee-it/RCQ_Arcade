@@ -1,11 +1,15 @@
 using UnityEngine;
 
+
+/// <summary>Class <c>BallController</c> qui gère les intéractions  d'une balle avec un Joueur.</summary>
 public class BallController : MonoBehaviour
 {
 
   
 
-    // Update is called once per frame
+    /// <summary>Cette méthode supprime l'objet instancié de la balle dans le jeu
+    ///    si la balle n'est plus dans le périmètre de la caméra
+    /// </summary>
     private void Update()
     {
         if (Camera.main != null)
@@ -17,12 +21,15 @@ public class BallController : MonoBehaviour
                 DestroyImmediate(gameObject.transform.parent.gameObject);
         }
     }
-
+    /// <summary>Cette méthode Augmente le score de la partie si la balle entre en collison avec le joueur </summary>
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Si l'objet touché est un Joueur
         if (other.CompareTag("Player"))
         {
+            // Appel de l'instance courante ( la partie en cours )
             FirstGameManager.score += 1;
+            // Destruction de la totalité de l'objet
             Destroy(gameObject.transform.parent.gameObject);
         }
     }
