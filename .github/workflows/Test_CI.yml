@@ -11,8 +11,6 @@ jobs:
   build:
     name: Build my project ✨
     runs-on: ubuntu-latest
-    if : startsWith(${{ github.head_ref }}, 'refs/heads/chore/')
-
     steps:
       - name: Get repo
 
@@ -57,7 +55,10 @@ jobs:
           destination-repository-name: 'RCQ-ARCADE-PROD'
           user-email: sajous.davenese@gmail.com
           commit-message: See ORIGIN_COMMIT from $GITHUB_REF
-          target-branch: prod
+          target-branch: test
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY
+
+
+  
 
