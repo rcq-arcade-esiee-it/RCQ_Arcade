@@ -3,23 +3,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>Class <c>GameManager</c> représentant la partie interaction entre les interfaces et les joueurs. Singleton qui se détruit si on cherche à l'instancier une nouvelle fois.</summary>
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // instance unique de l'objet GameManager
     public static GameManager instance;
+    // prefabs utilisées pour le gameManager
     public GameObject faderObj;
     public Image faderImg;
     public float fadeSpeed = .02f;
-
-
     private readonly Color fadeTransparency = new(0, 0, 0, .04f);
     private AsyncOperation async;
-
     private bool isReturning;
 
-    // TEst>
-    // Get the current scene name
+    // Getter et Setter retournant et créant nle nom de l'écran courant
     public string CurrentSceneName { get; set; }
+
+    /// <summary>Cette méthode instancie une seule fois la classe à son activation </summary>
 
     private void Awake()
     {
@@ -37,28 +37,17 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
     }
 
-    private void Start()
-    {
-    }
-
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         CurrentSceneName = scene.name;
-        instance.StartCoroutine(FadeIn(instance.faderObj, instance.faderImg));
     }
 
     public void LoadScene(string sceneName)
     {
         instance.StartCoroutine(Load(sceneName));
-        instance.StartCoroutine(FadeOut(instance.faderObj, instance.faderImg));
+        ActivateScene();
     }
-
-    // public void ReloadScene()
-    // {
-    //     LoadScene(SceneManager.GetActiveScene().name);
-    // }
-
-    // Begin loading a scene with a specified string asynchronously
+    
     private IEnumerator Load(string sceneName)
     {
         async = SceneManager.LoadSceneAsync(sceneName);
@@ -71,61 +60,5 @@ public class GameManager : MonoBehaviour
     {
         async.allowSceneActivation = true;
     }
-
-    private IEnumerator FadeOut(GameObject faderObject, Image fader)
-    {
-        faderObject.SetActive(true);
-        while (fader.color.a < 1)
-        {
-            fader.color += fadeTransparency;
-            yield return new WaitForSeconds(fadeSpeed);
-        }
-
-        ActivateScene(); //Activate the scene when the fade ends
-    }
-
-    private IEnumerator FadeIn(GameObject faderObject, Image fader)
-    {
-        while (fader.color.a > 0)
-        {
-            fader.color -= fadeTransparency;
-            yield return new WaitForSeconds(fadeSpeed);
-        }
-
-        faderObject.SetActive(false);
-    }
-
-//     public void ExitGame()
-//     {
-//         // If we are running in a standalone build of the game
-// #if UNITY_STANDALONE
-//         // Quit the application
-//         Application.Quit();
-// #endif
-//
-//         // If we are running in the editor
-// #if UNITY_EDITOR
-//         // Stop playing the scene
-//         EditorApplication.isPlaying = false;
-// #endif
-//     }
-
-    // public void ReturnToMenu()
-    // {
-    //     if (isReturning) return;
-    //
-    //     if (CurrentSceneName != "MenuGame")
-    //     {
-    //         StopAllCoroutines();
-    //         LoadScene("MenuGame");
-    //         isReturning = true;
-    //     }
-    // }
-    //
-    // public void LoadSceneWithParameters(string sceneName, string jsonString)
-    // {
-    //     // ENvoyer un JSON
-    //     instance.StartCoroutine(Load(sceneName));
-    //     instance.StartCoroutine(FadeOut(instance.faderObj, instance.faderImg));
-    // }
+    
 }

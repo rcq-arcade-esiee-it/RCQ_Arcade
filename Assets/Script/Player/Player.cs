@@ -2,16 +2,20 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>Class <c>Player</c> représentant les mouvements et évenements des joueurs.</summary>
+
 public class Player : MonoBehaviour
 {
+    // variables définissants un joueurs
     [SerializeField] private float _speed;
     private Collider2D _collider2D;
-
     private Vector2 _moveInput;
     private Rigidbody2D _rigidbody2D;
     private Animator animator;
     private PlayerActions playerActions;
     private  bool winner;
+
+    // Getters et Setters
 
     public bool isWinner
     {
@@ -24,6 +28,7 @@ public class Player : MonoBehaviour
         set => _speed = value;
     }
 
+    /// <summary>Cette méthode instancie les différents composants d'un joueur </summary>
     private void Awake()
     {
         playerActions = new PlayerActions();
@@ -36,13 +41,7 @@ public class Player : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
-
-    // Update is called once per fram
-
+    /// <summary>Cette méthode permet de faire bouger le joueur </summary>
     private void FixedUpdate()
     {
         _moveInput = playerActions.Player_Map.Movement.ReadValue<Vector2>();
@@ -57,8 +56,7 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("moving", false);
         }
-
-
+        
             
         if (FirstGameManager.instance.partyFinished) StartCoroutine(Winner());
         
@@ -66,6 +64,8 @@ public class Player : MonoBehaviour
             
     }
     
+    /// <summary>Cette méthode initialise plusieurs animations en fonction du joueur </summary>
+
     private IEnumerator Winner()
     {
         
@@ -77,16 +77,20 @@ public class Player : MonoBehaviour
         speedAccess = 0;
         yield return new WaitForSeconds(2); //waits 1 seconds
     }
+    
+    /// <summary>Cette méthode active le controle du joueur  </summary>
 
     private void OnEnable()
     {
         playerActions.Player_Map.Enable();
     }
+    /// <summary>Cette méthode désactive le controle du joueur  </summary>
 
     private void OnDisable()
     {
         playerActions.Player_Map.Disable();
     }
+    /// <summary>Cette méthode initialise plusieurs animations en fonction du joueur </summary>
 
     private IEnumerator Staunt()
     {

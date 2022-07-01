@@ -1,27 +1,28 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>Class <c>BombController</c> qui gère les intéractions  d'une bomb avec un Joueur.</summary>
 public class BombController : MonoBehaviour
 {
     private Animator animator;
 
-    // Start is called before the first frame update
+    // Start est appelé avant la mise à jour de la première image
     private void Start()
     {
+        // Animation de la bombe 
         animator = GetComponent<Animator>();
         animator.SetBool("collide", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) StartCoroutine(Die());
+        if (other.CompareTag("Player")) StartCoroutine(GetStaunt());
     }
-
-    // Update is called once per frame
-
-
-    //And function itself
-    private IEnumerator Die()
+    
+    /// <summary>Cette méthode supprime l'objet instancié de la bombe dans le jeu
+    ///    si la bombe touche le joueur
+    /// </summary>
+    private IEnumerator GetStaunt()
     {
         gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
         FirstGameManager.instance.staunt = true;

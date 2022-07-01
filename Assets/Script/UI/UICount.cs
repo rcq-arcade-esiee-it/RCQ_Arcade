@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-
+/// <summary>Class <c>UICount</c> représentant le timer du jeu </summary>
 public class UICount : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -10,7 +10,7 @@ public class UICount : MonoBehaviour
     private void Start()
     {
         count = GetComponent<TextMeshProUGUI>();
-        StartCoroutine(Truc1());
+        StartCoroutine(Timer());
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class UICount : MonoBehaviour
     }
 
 
-    private IEnumerator Truc1()
+    private IEnumerator Timer()
     {
         while (!FirstGameManager.instance.partyFinished)
         {

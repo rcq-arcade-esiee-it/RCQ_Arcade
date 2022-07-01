@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-
+/// <summary>Class <c>ScorePlayer</c> représentant le texte affichant le score du joueur </summary>
 public class ScorePlayer : MonoBehaviour
 {
     private TextMeshProUGUI playerScore;

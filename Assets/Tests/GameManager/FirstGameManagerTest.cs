@@ -6,28 +6,26 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
-
+/// <summary>Class <c>DFirstGameManagerTest</c> representant une suite de tests devant êtres lancées dans un ordre précis.</summary>
 public class DFirstGameManagerTest : InputTestFixture
 {
-    public GameObject bombPrefab;
-
-    private GameObject firstGameManagerPrefab;
-
+    
+    // Variables d'environnement de test
+    private LoadSceneParameters loadSceneParameters;
     private string firstGameScenePath;
     private Keyboard keyboard;
 
     // Initialisation des composant prefab
+    public GameObject bombPrefab;
+    private GameObject firstGameManagerPrefab;
     private GameObject gameManagerPrefab;
-    private LoadSceneParameters loadSceneParameters;
     private GameObject mainCanvasPrefab;
-    
-
     private GameObject playerPrefab;
     public GameObject rugbyBallPrefab;
 
 
-    // Start is called before the first frame update
-   
+    /// <summary>Cette méthode met en place les différents prefabs et objets dont auront besoin les tests
+    /// </summary>   
     public override void Setup()
     {
         base.Setup();
@@ -73,7 +71,7 @@ public class DFirstGameManagerTest : InputTestFixture
     [UnityTest]
     public IEnumerator _01_FirstGameManagerExistsInScene()
     {
-        FirstGameManager.InitializeTestingEnvironment(false, false, false, false, true);
+        FirstGameManager.InitializeTestingEnvironment(false, false, false, true);
 
         EditorSceneManager.LoadSceneInPlayMode(firstGameScenePath, loadSceneParameters);
 
@@ -87,10 +85,10 @@ public class DFirstGameManagerTest : InputTestFixture
     [UnityTest]
     public IEnumerator _02_FirstGameManagerCanSpawnPlayerOnLoad()
     {
-        FirstGameManager.InitializeTestingEnvironment(false, false, false, false, true);
+        FirstGameManager.InitializeTestingEnvironment(false, false , false, true);
 
         Object.Instantiate(firstGameManagerPrefab).GetComponent<FirstGameManager>();
-        FirstGameManager.InitializeTestingEnvironment(true, false, false, false, true);
+        FirstGameManager.InitializeTestingEnvironment(true, false, false, true);
 
         yield return null;
 
@@ -102,7 +100,7 @@ public class DFirstGameManagerTest : InputTestFixture
     public IEnumerator _03_FirstGameManagerSpawnsBall()
     {
         Object.Instantiate(firstGameManagerPrefab);
-        FirstGameManager.InitializeTestingEnvironment(false, true, false, true, true);
+        FirstGameManager.InitializeTestingEnvironment(false, true, true, true);
 
         yield return null;
 
