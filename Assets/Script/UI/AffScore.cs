@@ -42,7 +42,7 @@ public class AffScore : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.backspaceKey.wasPressedThisFrame)
+        if (Keyboard.current.backspaceKey.wasPressedThisFrame) // en appuaynt sur "back space" on retourne au menu de choix de jeu
         {
             GameManager.instance.LoadScene("GameMenu");
         }
