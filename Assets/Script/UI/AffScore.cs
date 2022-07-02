@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO; 
 using System.Linq;
-using GluonGui.Dialog;
 using TMPro;
 using UnityEditor;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class AffScore : MonoBehaviour
 {
@@ -44,7 +44,10 @@ public class AffScore : MonoBehaviour
 
     void Update()
     {
-        
+        if (Keyboard.current.backspaceKey.wasPressedThisFrame)
+        {
+            GameManager.instance.LoadScene("GameMenu");
+        }
     }
     
 }
