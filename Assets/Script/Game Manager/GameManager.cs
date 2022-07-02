@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public float fadeSpeed = .02f;
     private readonly Color fadeTransparency = new(0, 0, 0, .04f);
     private AsyncOperation async;
-    private bool isReturning;
+    private bool isReturning; 
 
     // Getter et Setter retournant et créant nle nom de l'écran courant
     public string CurrentSceneName { get; set; }
