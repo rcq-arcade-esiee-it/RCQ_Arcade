@@ -95,7 +95,7 @@ public class FirstGameManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(3);
 
         }
-        GameManager.instance.LoadScene("Score");
+        GameManager.instance.LoadScene("Aff_Score");
 
     }
     /// <summary>Cette méthode instancie une seule fois la classe à son activation </summary>
