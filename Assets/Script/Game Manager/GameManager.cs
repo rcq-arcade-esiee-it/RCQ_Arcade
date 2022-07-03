@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     // instance unique de l'objet GameManager
     public static GameManager instance;
+
     // prefabs utilisées pour le gameManager
     public GameObject faderObj;
     public Image faderImg;
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     private readonly Color fadeTransparency = new(0, 0, 0, .04f);
     private AsyncOperation async;
     private bool isReturning; 
+    public bool  ModeDeuxJoueur;
 
     // Getter et Setter retournant et créant nle nom de l'écran courant
     public string CurrentSceneName { get; set; }

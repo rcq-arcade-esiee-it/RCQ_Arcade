@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 /// <summary>Class <c>DFirstGameManagerTest</c> representant une suite de tests devant êtres lancées dans un ordre précis.</summary>
-public class DFirstGameManagerTest : InputTestFixture
+public class EFirstGameManagerTest : InputTestFixture
 {
     
     // Variables d'environnement de test

@@ -19,14 +19,14 @@ public class ChoosePlayerMenuScript : MonoBehaviour
     void Update () {
         if (Keyboard.current.aKey.wasPressedThisFrame) // si la touche "Q" (clavier qwerty) est appuyé, ça active le mode 1 joueur
         {
-            GameManager.ModeDeuxJoueur = false; 
+            GameManager.instance.ModeDeuxJoueur = false; 
             Debug.Log("Mode 1 joueur");
             P1_image.sprite = P1_1; // changement des images afficher pour savoir visuellement l'état du mode un joueur ou deux joueur
             P2_image.sprite = P2_2;
         }
         else if (Keyboard.current.dKey.wasPressedThisFrame) // si la touche "d" (clavier qwerty) est appuyé, ça active le mode 2 joueur
         {
-            GameManager.ModeDeuxJoueur = true;
+            GameManager.instance.ModeDeuxJoueur = true;
             P1_image.sprite = P1_2;
             P2_image.sprite = P2_1;
             Debug.Log("Mode 2 joueurs");

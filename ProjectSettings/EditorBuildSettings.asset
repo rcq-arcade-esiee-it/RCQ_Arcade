@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/GameMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/TwoPlayerSelect.unity
+    guid: f1e6445c44494e649885cd299c454a75
+  - enabled: 1
+    path: Assets/Scenes/TeamChoose.unity
+    guid: a9064e088728f1743b945497741b295a
+  - enabled: 1
     path: Assets/Scenes/Game1.unity
     guid: 9a0ca699f22e4524aaf0f0bfce3de903
   - enabled: 1
