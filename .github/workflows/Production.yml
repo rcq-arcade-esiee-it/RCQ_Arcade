@@ -1,0 +1,63 @@
+name: CI BUILDER
+
+on: 
+  # Replace with your main branch if needed
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+    name: Build my project ✨
+    runs-on: ubuntu-latest
+    if : startsWith(${{ github.head_ref }}, 'refs/heads/chore/')
+
+    steps:
+      - name: Get repo
+
+        run: echo ${{ github.head_ref }}
+
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+        with:
+          lfs: true
+
+      # Cache
+      - uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+      # Build
+      - name: Build project
+        uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneLinux64
+
+      # Output
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: build 
+      - name: Push directory to another repository
+        uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        with:
+          source-directory: 'build/'
+          destination-github-username: 'rcq-arcade-esiee-it'
+          destination-repository-name: 'RCQ-ARCADE-PROD'
+          user-email: sajous.davenese@gmail.com
+          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
+          target-branch: prod
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
+

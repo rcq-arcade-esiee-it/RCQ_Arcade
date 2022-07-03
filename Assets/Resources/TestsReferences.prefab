@@ -45,7 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManagerPrefab: {fileID: 6887803960636813183, guid: dafa790871d87204fa0738b06335a3c0, type: 3}
+  firstGameManagerPrefab: {fileID: 6502134719653315223, guid: 3b7acc5cb0a4703439034df30fa996d2, type: 3}
+  playerPrefab: {fileID: 4080096147615240631, guid: dbe307150f95edf468a26d2cfc523d6d, type: 3}
   mainCanvasPrefab: {fileID: 2045262675011921022, guid: 2153688af9af7c94ab5322c29befa04e, type: 3}
   mainGameScene: {fileID: 102900000, guid: 5c412f308f5541243a540594c61bd0e3, type: 3}
   gameMenuScene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
   firstGameScene: {fileID: 102900000, guid: 9a0ca699f22e4524aaf0f0bfce3de903, type: 3}
+  rugbyBallPrefab: {fileID: 8826489472049016286, guid: fb592c51e92276a459dc808ff4006982, type: 3}
+  bombPrefab: {fileID: 2326428724471007433, guid: c45a4efdb4dccb84096fbd1dcc2878ec, type: 3}
+  teleportPrefab: {fileID: 2772339904174747749, guid: 135ecfe52d26e80478fab9289e5893be, type: 3}
+  teleportTargetPrefab: {fileID: 4514560059831906814, guid: 76ddabe00a937134689319ada928cbb7, type: 3}

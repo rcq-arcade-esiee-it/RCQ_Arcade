@@ -7,15 +7,21 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
-
-public class GameFirstStartTest : InputTestFixture
+/// <summary>Class <c>AGameFirstStartTest</c> representant une suite de tests devant êtres lancées dans un ordre précis.</summary>
+public class AGameFirstStartTest : InputTestFixture
 {
+    
+    // Variables d'environnement de test
     private TextMeshProUGUI _textMeshProUGUI;
     private Keyboard keyboard;
     private LoadSceneParameters loadSceneParameters;
-    private GameObject mainCanvasPrefab;
     private string mainScreenScenePath;
+    // Initialisation des composant prefab
 
+    private GameObject mainCanvasPrefab;
+
+    /// <summary>Cette méthode met en place les différents prefabs et objets dont auront besoin les tests
+    /// </summary>   
     public override void Setup()
     {
         base.Setup();
@@ -66,7 +72,7 @@ public class GameFirstStartTest : InputTestFixture
 
         Assert.That(sceneName, Is.EqualTo("MainScreen"));
 
-        // Cette fonction simule un joueur appuyant sur la touche a de son clavier
+        // Cette fonction simule un joueur appuyant sur la touche a de son clavier, a utiliser dans une méthode IEnumerator, et suivit d'un Yield return new WaitForSeconds()
         Press(keyboard.aKey);
 
         yield return new WaitForSeconds(2f);

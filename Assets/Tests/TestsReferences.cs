@@ -5,6 +5,8 @@ public class TestsReferences : MonoBehaviour
     #region CORE
 
     public GameObject gameManagerPrefab;
+    public GameObject firstGameManagerPrefab;
+    public GameObject playerPrefab;
     public GameObject mainCanvasPrefab;
 
     #endregion
@@ -14,6 +16,20 @@ public class TestsReferences : MonoBehaviour
     public Object mainGameScene;
     public Object gameMenuScene;
     public Object firstGameScene;
+
+    #endregion
+
+    #region Collectibles
+
+    public GameObject rugbyBallPrefab;
+    public GameObject bombPrefab;
+
+    #endregion
+    
+    #region Utilities
+
+    public GameObject teleportPrefab;
+    public GameObject teleportTargetPrefab;
 
     #endregion
 }
