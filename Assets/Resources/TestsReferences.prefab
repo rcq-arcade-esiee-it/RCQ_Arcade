@@ -47,6 +47,7 @@ MonoBehaviour:
   gameManagerPrefab: {fileID: 6887803960636813183, guid: dafa790871d87204fa0738b06335a3c0, type: 3}
   firstGameManagerPrefab: {fileID: 6502134719653315223, guid: 3b7acc5cb0a4703439034df30fa996d2, type: 3}
   playerPrefab: {fileID: 4080096147615240631, guid: dbe307150f95edf468a26d2cfc523d6d, type: 3}
+  player2Prefab: {fileID: 4080096147615240631, guid: ab39d3611c5419a44a06b81d01e31754, type: 3}
   mainCanvasPrefab: {fileID: 2045262675011921022, guid: 2153688af9af7c94ab5322c29befa04e, type: 3}
   mainGameScene: {fileID: 102900000, guid: 5c412f308f5541243a540594c61bd0e3, type: 3}
   gameMenuScene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}

@@ -56,12 +56,14 @@ public class CUIMenuTest : InputTestFixture
         yield return new WaitForSeconds(1f);
         Debug.Log(gameManager.CurrentSceneName);
         Assert.That(SceneManager.GetActiveScene().name
-            , Is.EqualTo("Game1"));
+            , Is.EqualTo("TwoPlayerSelect"));
     }
 
     [UnityTest]
     public IEnumerator _02_OnSelect_devrait_changer_bouton_selectionne()
     {
+        LogAssert.ignoreFailingMessages = true;
+
         gameManager.LoadScene(gameMenuScenePath);
         yield return new WaitForSecondsRealtime(3);
         // Given

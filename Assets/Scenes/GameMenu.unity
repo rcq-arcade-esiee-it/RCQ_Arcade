@@ -597,14 +597,16 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -2216082554243798361, guid: dafa790871d87204fa0738b06335a3c0, type: 3}
         m_TargetAssemblyTypeName: GameManager, RCQ_Arcade
-        m_MethodName: LoadScene
+        m_MethodName: LoadSceneWithParameters
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game1
+          m_StringArgument: '    {"title":"ATTRAPES LES TOUS","description":"ATTRAPES
+            UN MAXIMUM DE BALLONS EN TE DEPLACANT AVEC LES TOUCHES CLIGNOTANTES","playerTwoModeAvailable":true,"gameInfoScene":"TwoPlayerSelect","gameScene":"Game1"    
+            } '
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &482280071

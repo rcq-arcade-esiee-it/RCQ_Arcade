@@ -37,17 +37,17 @@ public class DSelectionTwoPlayerTest : InputTestFixture
     public IEnumerator _01_OnSelect_devrait_changer_bouton_selectionne()
     {
         gameManager.LoadScene(twoPlayerScenePath);
-        var button1 = GameObject.Find("MainCanvas/BT_P1/Image_P1").GetComponent<Image>();
-        var button2 = GameObject.Find("MainCanvas/BT_P2/Image_P2").GetComponent<Image>();
+        var button1 = GameObject.Find("MainCanvas/GameInfoCanvas/BT_P1/Image_P1").GetComponent<Image>();
+        var button2 = GameObject.Find("MainCanvas/GameInfoCanvas/BT_P2/Image_P2").GetComponent<Image>();
 
 		 Press(keyboard.dKey);
 		 yield return new WaitForSeconds(2f);
-         Assert.That(button1.sprite != GameObject.Find("MainCanvas/BT_P1/Image_P1").GetComponent<Image>().sprite);
+         Assert.That(button1.sprite != GameObject.Find("MainCanvas/GameInfoCanvas/BT_P1/Image_P1").GetComponent<Image>().sprite);
 
          
          Press(keyboard.aKey);
          yield return new WaitForSeconds(2f);
-         Assert.That(button2.sprite != GameObject.Find("MainCanvas/BT_P1/Image_P1").GetComponent<Image>().sprite);
+         Assert.That(button2.sprite != GameObject.Find("MainCanvas/GameInfoCanvas/BT_P1/Image_P1").GetComponent<Image>().sprite);
     }
     [UnityTest]
     public IEnumerator _02_EnterKey_devrait_charger_ecran_suivant()
@@ -55,13 +55,15 @@ public class DSelectionTwoPlayerTest : InputTestFixture
         Press(keyboard.enterKey);
         yield return new WaitForSeconds(2f);
         Assert.That( SceneManager.GetActiveScene().name
-            == "TeamChoose");
+            == "Game1");
 
     }
     [UnityTest]
     public IEnumerator _03_BackSpace_devrait_charger_ecran_menu()
-    {
+    {       
+
         gameManager.LoadScene(twoPlayerScenePath);
+        LogAssert.ignoreFailingMessages = true;
 
         Press(keyboard.backspaceKey);
         yield return new WaitForSeconds(2f);

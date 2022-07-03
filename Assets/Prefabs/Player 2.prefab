@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 3841468410048879322}
   - component: {fileID: 8764722494956115851}
   m_Layer: 5
-  m_Name: Player_1
+  m_Name: Player_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: JOUEUR I
+  m_text: JOUEUR II
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9c80d66866418ca45b385630973a8d4b, type: 2}
   m_sharedMaterial: {fileID: 6136908676399410533, guid: 9c80d66866418ca45b385630973a8d4b, type: 2}
@@ -250,11 +250,10 @@ GameObject:
   - component: {fileID: 8041982415719889859}
   - component: {fileID: 1876366456852179691}
   - component: {fileID: 6691651030743761750}
-  - component: {fileID: 8503255222469234923}
-  - component: {fileID: 317189207847540761}
+  - component: {fileID: 5856780351390201515}
   m_Layer: 0
-  m_Name: Player 1
-  m_TagString: Player
+  m_Name: Player 2
+  m_TagString: Player 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,7 +393,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8503255222469234923
+--- !u!114 &5856780351390201515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,37 +402,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4080096147615240631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 85cbcaf55a7eaa04a8db98af2e394dfd, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player_Map
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &317189207847540761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4080096147615240631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24679926ef0a4f2bb09be477ef3cb24f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f7a47887b0bc56489f842471cd08ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5000
@@ -450,7 +419,7 @@ GameObject:
   - component: {fileID: 971499307647435505}
   - component: {fileID: 440258342807860672}
   m_Layer: 5
-  m_Name: Player_1_Score
+  m_Name: Player_2_Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

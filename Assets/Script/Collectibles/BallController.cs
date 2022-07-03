@@ -25,10 +25,14 @@ public class BallController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Si l'objet touché est un Joueur
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") ||other.CompareTag("Player 2") )
         {
-            // Appel de l'instance courante ( la partie en cours )
-            FirstGameManager.score += 1;
+            var instanceScorePlayer1 = other.CompareTag("Player") ?
+                // Appel de l'instance courante ( la partie en cours )
+                FirstGameManager.instance.scorePlayer1 += 1:
+            
+                FirstGameManager.instance.scorePlayer2 += 1;
+
             // Destruction de la totalité de l'objet
             Destroy(gameObject.transform.parent.gameObject);
         }

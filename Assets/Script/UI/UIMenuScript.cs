@@ -13,7 +13,6 @@ public class UIMenuScript : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     private void Start()
     {
-        InputSystem.onAnyButtonPress.CallOnce(control => Debug.Log(control));
         audio = GetComponent<AudioSource>();
     }
     
