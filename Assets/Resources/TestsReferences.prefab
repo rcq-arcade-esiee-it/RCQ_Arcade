@@ -50,6 +50,7 @@ MonoBehaviour:
   mainCanvasPrefab: {fileID: 2045262675011921022, guid: 2153688af9af7c94ab5322c29befa04e, type: 3}
   mainGameScene: {fileID: 102900000, guid: 5c412f308f5541243a540594c61bd0e3, type: 3}
   gameMenuScene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
+  twoPlayerScene: {fileID: 102900000, guid: f1e6445c44494e649885cd299c454a75, type: 3}
   firstGameScene: {fileID: 102900000, guid: 9a0ca699f22e4524aaf0f0bfce3de903, type: 3}
   rugbyBallPrefab: {fileID: 8826489472049016286, guid: fb592c51e92276a459dc808ff4006982, type: 3}
   bombPrefab: {fileID: 2326428724471007433, guid: c45a4efdb4dccb84096fbd1dcc2878ec, type: 3}

@@ -15,6 +15,8 @@ public class TestsReferences : MonoBehaviour
 
     public Object mainGameScene;
     public Object gameMenuScene;
+    public Object twoPlayerScene;
+
     public Object firstGameScene;
 
     #endregion
