@@ -43,13 +43,11 @@ public class DSelectionTwoPlayerTest : InputTestFixture
 		 Press(keyboard.dKey);
 		 yield return new WaitForSeconds(2f);
          Assert.That(button1.sprite != GameObject.Find("MainCanvas/BT_P1/Image_P1").GetComponent<Image>().sprite);
-         Assert.IsTrue(gameManager.ModeDeuxJoueur == true);
 
          
          Press(keyboard.aKey);
          yield return new WaitForSeconds(2f);
          Assert.That(button2.sprite != GameObject.Find("MainCanvas/BT_P1/Image_P1").GetComponent<Image>().sprite);
-
     }
     [UnityTest]
     public IEnumerator _02_EnterKey_devrait_charger_ecran_suivant()
