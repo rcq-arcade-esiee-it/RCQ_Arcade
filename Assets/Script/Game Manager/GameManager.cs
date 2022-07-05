@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject faderObj;
     public Image faderImg;
     public float fadeSpeed = .02f;
+    public int choixequipej1 = -100;
+    public int choixequipej2 = -100;
+
     private readonly Color fadeTransparency = new(0, 0, 0, .04f);
     private AsyncOperation async;
     private bool isReturning; 
