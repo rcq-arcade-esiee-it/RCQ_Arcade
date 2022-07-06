@@ -17,12 +17,11 @@ public class MainGameScript : MonoBehaviour
     {
         Debug.Log(testing);
         audioWhistle = GetComponent<AudioSource>();
+        // En cas de test, la fonction est ignoré pour cause de surcharge
         if (!testing)
         {
             InputSystem.onAnyButtonPress.CallOnce(control =>
             {
-       
-                Debug.Log(control.name);
                 if (!audioWhistle.isPlaying) audioWhistle.Play();
                 Invoke("ChangeMenu", 1);
             });
@@ -39,11 +38,12 @@ public class MainGameScript : MonoBehaviour
             if (Keyboard.current.anyKey.wasPressedThisFrame)
             {
                 Invoke("ChangeMenu", 1);
-
             }
         }
 
     }
+    
+    
 
     private void blinkText()
     {
