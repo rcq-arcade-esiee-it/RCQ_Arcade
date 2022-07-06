@@ -229,6 +229,18 @@ public class EFirstGameManagerTest : InputTestFixture
         Assert.IsNotNull(player1);
         Assert.IsNotNull(player2);
 
+    }
+    
+    [UnityTest]
+    public IEnumerator _09_FirstGameManagerPlayer1WinIfScoreIsMoreThanPlayer2()
+    {        
+        LogAssert.ignoreFailingMessages = true;
+
+        var player1 = Object.FindObjectOfType<Player1Controller>();
+        var player2 = Object.FindObjectOfType<Player2Controller>();
+        
+        yield return new WaitForSecondsRealtime(1);
+        
         var bomb = Object.Instantiate(bombPrefab, new Vector2(3230, 363), Quaternion.identity)
             .GetComponent<BombController>();
 
@@ -238,16 +250,49 @@ public class EFirstGameManagerTest : InputTestFixture
         
         FirstGameManager.instance.time = 3;
         
+        FirstGameManager.instance.scorePlayer1 = 20;
+        yield return new WaitForSecondsRealtime(4);
+
+     
+        Assert.IsTrue(FirstGameManager.instance.partyFinished);
+        
+        Assert.IsTrue(player1.isWinner);
+        Assert.IsTrue(!player2.isWinner);
+
+
+    }
+    
+    [UnityTest]
+    public IEnumerator _10_FirstGameManagerPlayer2WinIfScoreIsMoreThanPlayer1()
+    {        
+        LogAssert.ignoreFailingMessages = true;
+
+        FirstGameManager.InitializeTestingEnvironment(false, true, true, true, true);
+        
+        Object.Instantiate(firstGameManagerPrefab);
+
+        yield return new WaitForSecondsRealtime(1);
+
+        EditorSceneManager.LoadSceneInPlayMode(firstGameScenePath, loadSceneParameters);
+        yield return new WaitForSecondsRealtime(1);
+        
+
+        var player1 = Object.FindObjectOfType<Player1Controller>();
+        var player2 = Object.FindObjectOfType<Player2Controller>();
+        
+
+    
+        yield return new WaitForSeconds(3);
+
+        
+        FirstGameManager.instance.time = 3;
+        
         FirstGameManager.instance.scorePlayer2 = 20;
         yield return new WaitForSecondsRealtime(4);
 
-        Assert.IsFalse(FirstGameManager.instance.stauntPlayer1);
-        Assert.IsFalse(FirstGameManager.instance.stauntPlayer2);
-
+   
         Assert.IsTrue(FirstGameManager.instance.partyFinished);
 
-        Assert.IsTrue(player1.Speed == 0);
-        Assert.IsTrue(player2.Speed == 0);
 
         Assert.IsTrue(player2.isWinner);
         Assert.IsTrue(!player1.isWinner);
