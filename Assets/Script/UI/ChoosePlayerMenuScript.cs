@@ -45,7 +45,7 @@ public class ChoosePlayerMenuScript : MonoBehaviour
         }
         else if (playerActions.UI.Submit.WasPressedThisFrame()) // On valide avec la touche "entré" et on passe à la scène suivante
         {
-            GameManager.instance.LoadScene("TeamChoose");
+            GameManager.instance.LoadScene("Game1");
         }
         
         else if (playerActions.UI.Back.WasPressedThisFrame()) // si on veut changer de jeu, on retourne sur l'écran de choix dde jeu
