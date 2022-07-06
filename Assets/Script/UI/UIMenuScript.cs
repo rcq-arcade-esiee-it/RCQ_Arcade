@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 /// <summary>Class <c>UIMenuScript</c> représentant les selections pouvant êtres faites dans le menu des jeux </summary>
 public class UIMenuScript : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
+    
     private AudioSource audio;
 
     private void Start()
@@ -14,9 +16,9 @@ public class UIMenuScript : MonoBehaviour, ISelectHandler, IDeselectHandler
         InputSystem.onAnyButtonPress.CallOnce(control => Debug.Log(control));
         audio = GetComponent<AudioSource>();
     }
+    
 
-    
-    
+
     /// <summary>Cette méthode supprime modifie l'objet déselectionné avec plusieurs critères
     /// </summary>
     public void OnDeselect(BaseEventData eventData)

@@ -25,6 +25,7 @@ public class AGameFirstStartTest : InputTestFixture
     public override void Setup()
     {
         base.Setup();
+        MainGameScript.testing = true;
         keyboard = InputSystem.AddDevice<Keyboard>();
 
         loadSceneParameters = new LoadSceneParameters(LoadSceneMode.Single, LocalPhysicsMode.None);
@@ -79,5 +80,7 @@ public class AGameFirstStartTest : InputTestFixture
 
         sceneName = SceneManager.GetActiveScene().name;
         Assert.That(sceneName, Is.EqualTo("GameMenu"));
+        MainGameScript.testing = false;
+
     }
 }

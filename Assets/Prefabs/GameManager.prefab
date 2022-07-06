@@ -322,3 +322,4 @@ MonoBehaviour:
   faderObj: {fileID: 2583364048873570886}
   faderImg: {fileID: 7656455241698454490}
   fadeSpeed: 0.02
+  ModeDeuxJoueur: 0

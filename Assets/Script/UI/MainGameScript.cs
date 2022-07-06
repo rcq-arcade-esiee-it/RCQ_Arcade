@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.SceneManagement;
 
 /// <summary>Class <c>MainGameScript</c> représentant la partie interaction avec le premier écran.</summary>
@@ -10,24 +11,39 @@ public class MainGameScript : MonoBehaviour
     private AudioSource audioWhistle;
     private double timer;
 
+    public static bool testing = false;
     // Start is called before the first frame update
     private void Start()
     {
+        Debug.Log(testing);
         audioWhistle = GetComponent<AudioSource>();
+        // En cas de test, la fonction est ignoré pour cause de surcharge
+        if (!testing)
+        {
+            InputSystem.onAnyButtonPress.CallOnce(control =>
+            {
+                if (!audioWhistle.isPlaying) audioWhistle.Play();
+                Invoke("ChangeMenu", 1);
+            });
+        }
+        
     }
 
     /// <summary>Cette méthode fais clignoter le texte et lance un audio lors du clique d'une touche </summary>
     private void Update()
     {
         blinkText();
-
-        if (Keyboard.current.anyKey.wasPressedThisFrame
-           )
+        if (testing)
         {
-            if (!audioWhistle.isPlaying) audioWhistle.Play();
-            Invoke("ChangeMenu", 1);
+            if (Keyboard.current.anyKey.wasPressedThisFrame)
+            {
+                Invoke("ChangeMenu", 1);
+            }
         }
+
     }
+    
+    
 
     private void blinkText()
     {

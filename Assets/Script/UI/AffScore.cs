@@ -27,7 +27,6 @@ public class AffScore : MonoBehaviour
             // si la ligne est vide on arrête
             if (line==null) break;
             // on affiche la ligne
-            Debug.Log(line);
 
             if (varTemp == 1)
             {
