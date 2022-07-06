@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     // instance unique de l'objet GameManager
     public static GameManager instance;
-
     // prefabs utilisées pour le gameManager
     public GameObject faderObj;
     public Image faderImg;
@@ -16,7 +15,8 @@ public class GameManager : MonoBehaviour
     private readonly Color fadeTransparency = new(0, 0, 0, .04f);
     private AsyncOperation async;
     private bool isReturning; 
-    public bool  ModeDeuxJoueur;
+    public static bool twoPlayers = false; 
+    public static  GameInfo gameInfo;
 
     // Getter et Setter retournant et créant nle nom de l'écran courant
     public string CurrentSceneName { get; set; }
@@ -49,7 +49,13 @@ public class GameManager : MonoBehaviour
         instance.StartCoroutine(Load(sceneName));
         ActivateScene();
     }
-    
+    public void LoadSceneWithParameters(string parameters)
+    {
+        GameManager.gameInfo = GameInfo.CreateFromJSON(parameters);
+        Debug.Log(gameInfo.description);
+        LoadScene(gameInfo.gameInfoScene);
+
+    }
     private IEnumerator Load(string sceneName)
     {
         async = SceneManager.LoadSceneAsync(sceneName);

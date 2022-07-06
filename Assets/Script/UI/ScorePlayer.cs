@@ -13,6 +13,11 @@ public class ScorePlayer : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        playerScore.text = FirstGameManager.score.ToString();
+        if (gameObject.name ==("Player_1_Score"))
+        
+            playerScore.text = FirstGameManager.instance.scorePlayer1.ToString();
+        else 
+            playerScore.text = FirstGameManager.instance.scorePlayer2.ToString();
+
     }
 }

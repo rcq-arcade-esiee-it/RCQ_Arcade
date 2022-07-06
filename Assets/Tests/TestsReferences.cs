@@ -7,6 +7,8 @@ public class TestsReferences : MonoBehaviour
     public GameObject gameManagerPrefab;
     public GameObject firstGameManagerPrefab;
     public GameObject playerPrefab;
+    public GameObject player2Prefab;
+
     public GameObject mainCanvasPrefab;
 
     #endregion

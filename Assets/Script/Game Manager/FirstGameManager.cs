@@ -15,6 +15,8 @@ public class FirstGameManager : MonoBehaviour
     
     // prefabs utilisées dans une premiere partie
     public GameObject playerPrefab;
+    public GameObject player2Prefab;
+
     public GameObject gameManagerPrefab;
     public GameObject rugbyBallPrefab;
     public GameObject bombPrefab;
@@ -25,36 +27,60 @@ public class FirstGameManager : MonoBehaviour
     public static bool updateEnabled = true;
     public static bool ballsEnabled = true;
     public static bool testEnabled;
+    public static bool twoPlayerEnabled;
 
 
     // variables liées à une partie
 
     public static Player player;
-    public static int score;
+    public static Player2Controller player2;
+
+    public  int scorePlayer1;
+    public  int scorePlayer2;
+
     public bool partyFinished;
-    public bool staunt;
+    public bool stauntPlayer1;
+    public bool stauntPlayer2;
+
     public float time;
     [HideInInspector] public float ballSpawnDelay = 1.0f;
     [HideInInspector] public float ballSpawnTimer;
 
   
     
-    private GameManager gameManager;
 
     /// <summary>Cette méthode instancie au lencement d'une partie les joueurs
     /// </summary>
     private void Start()
     {
-        gameManager = Instantiate(gameManagerPrefab).GetComponent<GameManager>();
 
         if (startEnabled)
+        {
+            
             player = Instantiate(playerPrefab, new Vector2(-3230, 363), Quaternion.identity)
                 .GetComponentInChildren<Player>();
+
+            if (GameManager.twoPlayers)
+            {
+                    player2 = Instantiate(player2Prefab, new Vector2(3230, 363), Quaternion.identity)
+                        .GetComponentInChildren<Player2Controller>();
+            }
+        }
         else
+        {
             player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity)
                 .GetComponentInChildren<Player>();
+            if (twoPlayerEnabled)
+            {
+                player2 = Instantiate(player2Prefab,new Vector2(3230, 363), Quaternion.identity)
+                    .GetComponentInChildren<Player2Controller>();
+            }
+        }
+           
         partyFinished = false;
-        staunt = false;
+        stauntPlayer1 = false;
+        stauntPlayer2 = false;
+
     }
 
     /// <summary>Cette méthode représente le déroulement du jeu </summary>
@@ -65,7 +91,7 @@ public class FirstGameManager : MonoBehaviour
             if (time <= 25) rugbyBallPrefab.GetComponentInChildren<Rigidbody2D>().gravityScale = 900000000000;
             UpdateTimers();
             if (ballSpawnTimer <= 0.0f && ballsEnabled && !rugbyBallPrefab.scene.IsValid()) SpawnRugbyBall();
-            if (Random.Range(1, 2500) < 2) SpawnBomb();
+            if (Random.Range(1, 2500) < 4) SpawnBomb();
         }
         else
         {
@@ -76,25 +102,51 @@ public class FirstGameManager : MonoBehaviour
 
     private IEnumerator PartyEnd()
     {
+        rugbyBallPrefab.GetComponentInChildren<Rigidbody2D>().gravityScale = 500;
         
         String text = "MEILLEUR JOUEUR";
         GameObject textObj = GameObject.Find("BestScore");
-
-        if (score > 15)
+        if (!GameManager.twoPlayers && !twoPlayerEnabled)
         {
-            textObj.SetActive(true);
-            textObj.GetComponent<TextMeshProUGUI>().text = "BRAVO !";
-            player.isWinner = true;
-            yield return new WaitForSecondsRealtime(3);
+            // Fin de partie un joueur
+            if (scorePlayer1 > 15)
+            {
+                textObj.SetActive(true);
+                textObj.GetComponent<TextMeshProUGUI>().text = "BRAVO !";
+                player.isWinner = true;
+                yield return new WaitForSecondsRealtime(3);
+            }
+            else
+            {
+                player.isWinner = false;
+                textObj.SetActive(true);
+                textObj.GetComponent<TextMeshProUGUI>().text = "DOMMAGE !";
+                yield return new WaitForSecondsRealtime(3);
+
+                
+            }
         }
         else
         {
-            player.isWinner = false;
-            textObj.SetActive(true);
-            textObj.GetComponent<TextMeshProUGUI>().text = "DOMMAGE !";
-            yield return new WaitForSecondsRealtime(3);
+            // Fin de partie deux joueurs
 
+            if (scorePlayer1 > scorePlayer2)
+            {
+                textObj.SetActive(true);
+                textObj.GetComponent<TextMeshProUGUI>().text = "BRAVO JOUEUR I";
+                player.isWinner = true;
+                yield return new WaitForSecondsRealtime(3);
+            }
+            else
+            {
+                player2.isWinner = true;
+                textObj.SetActive(true);
+                textObj.GetComponent<TextMeshProUGUI>().text = "BRAVO JOUEUR II";
+                yield return new WaitForSecondsRealtime(3);
+
+            }
         }
+        
         GameManager.instance.LoadScene("Aff_Score");
 
     }
@@ -107,16 +159,19 @@ public class FirstGameManager : MonoBehaviour
             Destroy(gameObject);
 
         Time.timeScale = 1.0f;
-        score = 0;
+        scorePlayer1 = 0;
+        scorePlayer2 = 0;
+
     }
     /// <summary>Cette méthode permet d'initialiser plusieurs paramètres de tests </summary>
 
-    public static void InitializeTestingEnvironment(bool start, bool update, bool balls, bool test)
+    public static void InitializeTestingEnvironment(bool start, bool update, bool balls, bool test, bool twoPlayer)
     {
         startEnabled = start;
         updateEnabled = update;
         ballsEnabled = balls;
         testEnabled = test;
+        twoPlayerEnabled = twoPlayer;
     }
 
     /// <summary>Cette méthode met a jour l'instanciation des balles </summary>

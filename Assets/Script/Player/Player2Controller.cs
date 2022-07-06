@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class Player2Controller : Player
+{
+    
+
+    private void OnEnable()
+    {
+        PlayerActions.Player2_Map.Enable();
+    }
+    /// <summary>Cette méthode désactive le controle du joueur  </summary>
+
+    private void OnDisable()
+    {
+        PlayerActions.Player2_Map.Disable();
+    }
+    
+    /// <summary>Cette méthode permet de faire bouger le joueur </summary>
+    private void FixedUpdate()
+    {
+        MoveInput = PlayerActions.Player2_Map.Movement.ReadValue<Vector2>();
+        Rigidbody2D.velocity = MoveInput * Speed;
+        if (MoveInput != Vector2.zero)
+        {
+            Animator.SetFloat("moveX", MoveInput.x);
+            Animator.SetBool("moving", true);
+        }
+        else
+        {
+            Animator.SetBool("moving", false);
+        }
+        
+            
+        if (FirstGameManager.instance.partyFinished) StartCoroutine(Winner());
+        
+        if (FirstGameManager.instance.stauntPlayer2)StartCoroutine(Staunt());
+            
+    }
+    /// <summary>Cette méthode active le controle du joueur  </summary>
+
+    public  IEnumerator Staunt()
+    {
+        FirstGameManager.instance.scorePlayer2 -= 3;
+        FirstGameManager.instance.stauntPlayer2 = false;
+        Collider2D.enabled = !Collider2D.enabled;
+        Animator.SetBool("staunt", true);
+        Speed = 0;
+        yield return new WaitForSeconds(2); //waits 1 seconds
+        Speed = 5000;
+        Animator.SetBool("staunt", false);
+        Collider2D.enabled = !Collider2D.enabled;
+
+    }
+}

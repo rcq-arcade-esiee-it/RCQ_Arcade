@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -16,16 +17,20 @@ public class BombController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) StartCoroutine(GetStaunt());
+        if (other.CompareTag("Player") || other.CompareTag("Player 2")) StartCoroutine(GetStaunt(other.tag));
+        
     }
     
     /// <summary>Cette méthode supprime l'objet instancié de la bombe dans le jeu
     ///    si la bombe touche le joueur
     /// </summary>
-    private IEnumerator GetStaunt()
+    private IEnumerator GetStaunt(String PlayerStaunted)
     {
         gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-        FirstGameManager.instance.staunt = true;
+        Debug.Log(PlayerStaunted);
+        var instanceStauntPlayer1 = PlayerStaunted == "Player"
+            ? FirstGameManager.instance.stauntPlayer1 = true
+            : FirstGameManager.instance.stauntPlayer2 = true;
 
         animator.SetBool("collide", true);
 

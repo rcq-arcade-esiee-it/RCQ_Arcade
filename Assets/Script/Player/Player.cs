@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private PlayerActions playerActions;
     private  bool winner;
 
+    
     // Getters et Setters
 
     public bool isWinner
@@ -22,11 +23,42 @@ public class Player : MonoBehaviour
         get => winner;
         set => winner = value;
     }
-    public float speedAccess
+    public float Speed
     {
         get => _speed;
         set => _speed = value;
     }
+
+    public Collider2D Collider2D
+    {
+        get => _collider2D;
+        set => _collider2D = value;
+    }
+
+    public Vector2 MoveInput
+    {
+        get => _moveInput;
+        set => _moveInput = value;
+    }
+
+    public Rigidbody2D Rigidbody2D
+    {
+        get => _rigidbody2D;
+        set => _rigidbody2D = value;
+    }
+
+    public Animator Animator
+    {
+        get => animator;
+        set => animator = value;
+    }
+
+    public PlayerActions PlayerActions
+    {
+        get => playerActions;
+        set => playerActions = value;
+    }
+    
 
     /// <summary>Cette méthode instancie les différents composants d'un joueur </summary>
     private void Awake()
@@ -40,33 +72,11 @@ public class Player : MonoBehaviour
         animator.SetFloat("moveX", 0);
     }
 
-
-    /// <summary>Cette méthode permet de faire bouger le joueur </summary>
-    private void FixedUpdate()
-    {
-        _moveInput = playerActions.Player_Map.Movement.ReadValue<Vector2>();
-        _moveInput.y = 0f;
-        _rigidbody2D.velocity = _moveInput * _speed;
-        if (_moveInput != Vector2.zero)
-        {
-            animator.SetFloat("moveX", _moveInput.x);
-            animator.SetBool("moving", true);
-        }
-        else
-        {
-            animator.SetBool("moving", false);
-        }
-        
-            
-        if (FirstGameManager.instance.partyFinished) StartCoroutine(Winner());
-        
-        if (FirstGameManager.instance.staunt)StartCoroutine(Staunt());
-            
-    }
+    
     
     /// <summary>Cette méthode initialise plusieurs animations en fonction du joueur </summary>
 
-    private IEnumerator Winner()
+    public IEnumerator Winner()
     {
         
         animator.SetBool("partyFinished", true);
@@ -74,34 +84,11 @@ public class Player : MonoBehaviour
         animator.SetBool("winner", winner);
         animator.SetBool("moving", false);
 
-        speedAccess = 0;
+        _speed = 0;
         yield return new WaitForSeconds(2); //waits 1 seconds
     }
     
-    /// <summary>Cette méthode active le controle du joueur  </summary>
 
-    private void OnEnable()
-    {
-        playerActions.Player_Map.Enable();
-    }
-    /// <summary>Cette méthode désactive le controle du joueur  </summary>
-
-    private void OnDisable()
-    {
-        playerActions.Player_Map.Disable();
-    }
-    /// <summary>Cette méthode initialise plusieurs animations en fonction du joueur </summary>
-
-    private IEnumerator Staunt()
-    {
-        FirstGameManager.score -= 3;
-        FirstGameManager.instance.staunt = false;
-        _collider2D.enabled = !_collider2D.enabled;
-        animator.SetBool("staunt", true);
-        speedAccess = 0;
-        yield return new WaitForSeconds(2); //waits 1 seconds
-        speedAccess = 5000;
-        animator.SetBool("staunt", false);
-        _collider2D.enabled = !_collider2D.enabled;
-    }
+    
+  
 }
