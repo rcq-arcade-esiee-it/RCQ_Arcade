@@ -54,7 +54,6 @@ public class CUIMenuTest : InputTestFixture
 
         // gameManager.LoadScene(firstGameScenePath);
         yield return new WaitForSeconds(1f);
-        Debug.Log(gameManager.CurrentSceneName);
         Assert.That(SceneManager.GetActiveScene().name
             , Is.EqualTo("TwoPlayerSelect"));
     }
