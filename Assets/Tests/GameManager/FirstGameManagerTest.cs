@@ -175,9 +175,41 @@ public class EFirstGameManagerTest : InputTestFixture
 
         yield return null;
     }
+    [UnityTest]
+    public IEnumerator _07_FirstGameManagerReturnLoseIfScoreIsLessThan15()
+    {        
+        LogAssert.ignoreFailingMessages = true;
+
+        FirstGameManager.InitializeTestingEnvironment(false, true, true, true, false);
+        
+        Object.Instantiate(firstGameManagerPrefab);
+
+        yield return new WaitForSecondsRealtime(1);
+
+        EditorSceneManager.LoadSceneInPlayMode(firstGameScenePath, loadSceneParameters);
+        yield return new WaitForSecondsRealtime(1);
+        
+
+        var player1 = Object.FindObjectOfType<Player1Controller>();
+
+ 
+        FirstGameManager.instance.time = 3;
+        
+        FirstGameManager.instance.scorePlayer1 = 2;
+        yield return new WaitForSecondsRealtime(4);
+
+        Assert.IsFalse(FirstGameManager.instance.stauntPlayer1);
+
+        Assert.IsTrue(FirstGameManager.instance.partyFinished);
+
+        Assert.IsTrue(player1.Speed == 0);
+
+        Assert.IsFalse(player1.isWinner);
+        
+    }
     
     [UnityTest]
-    public IEnumerator _07_FirstGameManagerReturnWithTwoPlayers()
+    public IEnumerator _08_FirstGameManagerReturnWithTwoPlayers()
     {        
         LogAssert.ignoreFailingMessages = true;
 
@@ -193,6 +225,9 @@ public class EFirstGameManagerTest : InputTestFixture
 
         var player1 = Object.FindObjectOfType<Player1Controller>();
         var player2 = Object.FindObjectOfType<Player2Controller>();
+        
+        Assert.IsNotNull(player1);
+        Assert.IsNotNull(player2);
 
         var bomb = Object.Instantiate(bombPrefab, new Vector2(3230, 363), Quaternion.identity)
             .GetComponent<BombController>();
@@ -200,9 +235,10 @@ public class EFirstGameManagerTest : InputTestFixture
         yield return new WaitForSeconds(3);
 
         Assert.IsFalse(FirstGameManager.instance.stauntPlayer1);
+        
         FirstGameManager.instance.time = 3;
         
-        FirstGameManager.instance.scorePlayer1 = 20;
+        FirstGameManager.instance.scorePlayer2 = 20;
         yield return new WaitForSecondsRealtime(4);
 
         Assert.IsFalse(FirstGameManager.instance.stauntPlayer1);
@@ -213,7 +249,8 @@ public class EFirstGameManagerTest : InputTestFixture
         Assert.IsTrue(player1.Speed == 0);
         Assert.IsTrue(player2.Speed == 0);
 
-        Assert.IsTrue(player1.isWinner);
-        
+        Assert.IsTrue(player2.isWinner);
+        Assert.IsTrue(!player1.isWinner);
+
     }
 }

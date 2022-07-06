@@ -91,7 +91,7 @@ public class FirstGameManager : MonoBehaviour
             if (time <= 25) rugbyBallPrefab.GetComponentInChildren<Rigidbody2D>().gravityScale = 900000000000;
             UpdateTimers();
             if (ballSpawnTimer <= 0.0f && ballsEnabled && !rugbyBallPrefab.scene.IsValid()) SpawnRugbyBall();
-            if (Random.Range(1, 2500) < 2) SpawnBomb();
+            if (Random.Range(1, 2500) < 4) SpawnBomb();
         }
         else
         {
@@ -106,8 +106,9 @@ public class FirstGameManager : MonoBehaviour
         
         String text = "MEILLEUR JOUEUR";
         GameObject textObj = GameObject.Find("BestScore");
-        if (!GameManager.twoPlayers)
+        if (!GameManager.twoPlayers && !twoPlayerEnabled)
         {
+            // Fin de partie un joueur
             if (scorePlayer1 > 15)
             {
                 textObj.SetActive(true);
@@ -120,11 +121,15 @@ public class FirstGameManager : MonoBehaviour
                 player.isWinner = false;
                 textObj.SetActive(true);
                 textObj.GetComponent<TextMeshProUGUI>().text = "DOMMAGE !";
-                ; 
+                yield return new WaitForSecondsRealtime(3);
+
+                
             }
         }
         else
         {
+            // Fin de partie deux joueurs
+
             if (scorePlayer1 > scorePlayer2)
             {
                 textObj.SetActive(true);
@@ -134,7 +139,7 @@ public class FirstGameManager : MonoBehaviour
             }
             else
             {
-                player2.isWinner = false;
+                player2.isWinner = true;
                 textObj.SetActive(true);
                 textObj.GetComponent<TextMeshProUGUI>().text = "BRAVO JOUEUR II";
                 yield return new WaitForSecondsRealtime(3);

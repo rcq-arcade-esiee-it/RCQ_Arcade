@@ -43,10 +43,7 @@ public class GameManager : MonoBehaviour
     {
         CurrentSceneName = scene.name;
     }
-    // Reload the current scene
-    public void ReloadScene() {
-        LoadScene(SceneManager.GetActiveScene().name);
-    }
+
     public void LoadScene(string sceneName)
     {
         instance.StartCoroutine(Load(sceneName));
