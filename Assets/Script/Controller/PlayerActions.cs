@@ -151,6 +151,133 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""Player2_Map"",
+            ""id"": ""e264cc76-0ad2-46e4-b16a-10f74e6d3f28"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""3c61d7fb-eff4-4ebf-adcd-1d4994513365"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""609080b8-bb99-41ee-94a0-f5e0548effed"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""bab93117-94f5-498c-856c-a39391a900c4"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""79d5ac7f-0f2f-4111-9f16-71c1f62dbf68"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""4b2ff42a-0f32-486e-8edc-cdca2567ed2b"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""01de902f-b693-46ab-8fff-972c438c4d90"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector Joystick"",
+                    ""id"": ""584e2821-298c-49fe-8153-8c8c1fdfca3b"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""ba3d7169-78e5-44ea-83c4-e8e0689901ae"",
+                    ""path"": ""<HID::DragonRise inc.   Generic   USB  Joystick  >/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""44121168-6665-4463-968f-6b597767ba7e"",
+                    ""path"": ""<HID::DragonRise inc.   Generic   USB  Joystick  >/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""423031a8-477a-48d6-aa4f-e4d513a9175e"",
+                    ""path"": ""<HID::DragonRise inc.   Generic   USB  Joystick  >/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3245e2c0-3e05-4ede-9ea6-6accd79b1cd4"",
+                    ""path"": ""<HID::DragonRise inc.   Generic   USB  Joystick  >/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
             ""name"": ""UI"",
             ""id"": ""c47f8312-262c-4c5d-9ee8-2b988a82cd97"",
             ""actions"": [
@@ -931,6 +1058,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         // Player_Map
         m_Player_Map = asset.FindActionMap("Player_Map", throwIfNotFound: true);
         m_Player_Map_Movement = m_Player_Map.FindAction("Movement", throwIfNotFound: true);
+        // Player2_Map
+        m_Player2_Map = asset.FindActionMap("Player2_Map", throwIfNotFound: true);
+        m_Player2_Map_Movement = m_Player2_Map.FindAction("Movement", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
@@ -1034,6 +1164,39 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         }
     }
     public Player_MapActions @Player_Map => new Player_MapActions(this);
+
+    // Player2_Map
+    private readonly InputActionMap m_Player2_Map;
+    private IPlayer2_MapActions m_Player2_MapActionsCallbackInterface;
+    private readonly InputAction m_Player2_Map_Movement;
+    public struct Player2_MapActions
+    {
+        private @PlayerActions m_Wrapper;
+        public Player2_MapActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Player2_Map_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Player2_Map; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Player2_MapActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayer2_MapActions instance)
+        {
+            if (m_Wrapper.m_Player2_MapActionsCallbackInterface != null)
+            {
+                @Movement.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnMovement;
+            }
+            m_Wrapper.m_Player2_MapActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+            }
+        }
+    }
+    public Player2_MapActions @Player2_Map => new Player2_MapActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1173,6 +1336,10 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         }
     }
     public interface IPlayer_MapActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+    }
+    public interface IPlayer2_MapActions
     {
         void OnMovement(InputAction.CallbackContext context);
     }
