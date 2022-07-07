@@ -125,6 +125,8 @@ public class FirstGameManager : MonoBehaviour
 
                 
             }
+
+            PlayerScore.Score1 = scorePlayer1;
         }
         else
         {
@@ -145,9 +147,12 @@ public class FirstGameManager : MonoBehaviour
                 yield return new WaitForSecondsRealtime(3);
 
             }
+            PlayerScore.Score1 = scorePlayer1;
+            PlayerScore.Score2 = scorePlayer2;
+
         }
         
-        GameManager.instance.LoadScene("Aff_Score");
+        GameManager.instance.LoadScene("Score");
 
     }
     /// <summary>Cette méthode instancie une seule fois la classe à son activation </summary>

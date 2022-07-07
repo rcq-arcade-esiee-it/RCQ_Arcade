@@ -35,6 +35,51 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""468c57f7-b10b-4ba3-b400-c3911d419054"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScoreUp"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""9e669a42-4f24-4cfc-a8d0-8a3a41f7ddaf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScoreDown"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""9c502572-fba4-48c5-aec0-50c763a2bbdb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScoreLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a55a295-08b3-4eea-acd4-45d7462a4d0b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScoreRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d23ef84-70c1-4a2c-b7e1-f16d62caac92"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -147,6 +192,116 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""197c9083-b1fc-4b97-96a2-aedf57aaba98"",
+                    ""path"": ""<Joystick>/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9812ea59-c02f-40e9-8687-caa269067553"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05e04dc4-1e0a-46db-b526-e9590f12e3a7"",
+                    ""path"": ""<Joystick>/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""664e33fb-a1de-4e06-936e-5d0d1163f388"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c89b1bf2-05be-407b-92cf-32658ad1246e"",
+                    ""path"": ""<HID::DragonRise inc.   Generic   USB  Joystick  >/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b60315fd-3748-4bc6-824f-83cb78f2d2f9"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09cd33bc-6ecc-465a-93ee-a8dce8bb0aac"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5e0d9c5-9515-46ef-87be-174e6907c108"",
+                    ""path"": ""<HID::DragonRise inc.   Generic   USB  Joystick  >/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""090adc7c-efef-4623-82fc-c020c84eda19"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7854e808-7fda-40b5-9169-04e644420963"",
+                    ""path"": ""<HID::DragonRise inc.   Generic   USB  Joystick  >/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -162,6 +317,51 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ScoreRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff4c150f-38c9-49e6-9b76-1efd77aa4ef4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScoreLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9d7ac1b-9038-4467-b974-7c6ab7347e06"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScoreDown"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""b3533660-c3e6-438b-89ac-23714b725b03"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScoreUp"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5cd4b11a-bf3e-4aab-9cf0-79e16462ccea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""717cefd3-7490-4386-8c8e-5401c3cbd598"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -274,6 +474,72 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""edf5e3e1-9195-4a8b-9a5f-234296d2be45"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a937e817-efdd-41dd-b943-858f80df4c87"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fea8d3a8-70dd-4220-bde5-cfabe0672c77"",
+                    ""path"": ""<HID::DragonRise inc.   Generic   USB  Joystick  >/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cedb1167-f0ad-4dd7-b631-acab7b3f88a0"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d31a7a7e-9bce-48a0-95d7-54248b5b361c"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""356d2562-80f8-4562-a5d7-ecc348c79746"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScoreRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1058,9 +1324,19 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         // Player_Map
         m_Player_Map = asset.FindActionMap("Player_Map", throwIfNotFound: true);
         m_Player_Map_Movement = m_Player_Map.FindAction("Movement", throwIfNotFound: true);
+        m_Player_Map_Fire = m_Player_Map.FindAction("Fire", throwIfNotFound: true);
+        m_Player_Map_ScoreUp = m_Player_Map.FindAction("ScoreUp", throwIfNotFound: true);
+        m_Player_Map_ScoreDown = m_Player_Map.FindAction("ScoreDown", throwIfNotFound: true);
+        m_Player_Map_ScoreLeft = m_Player_Map.FindAction("ScoreLeft", throwIfNotFound: true);
+        m_Player_Map_ScoreRight = m_Player_Map.FindAction("ScoreRight", throwIfNotFound: true);
         // Player2_Map
         m_Player2_Map = asset.FindActionMap("Player2_Map", throwIfNotFound: true);
         m_Player2_Map_Movement = m_Player2_Map.FindAction("Movement", throwIfNotFound: true);
+        m_Player2_Map_ScoreRight = m_Player2_Map.FindAction("ScoreRight", throwIfNotFound: true);
+        m_Player2_Map_ScoreLeft = m_Player2_Map.FindAction("ScoreLeft", throwIfNotFound: true);
+        m_Player2_Map_ScoreDown = m_Player2_Map.FindAction("ScoreDown", throwIfNotFound: true);
+        m_Player2_Map_ScoreUp = m_Player2_Map.FindAction("ScoreUp", throwIfNotFound: true);
+        m_Player2_Map_Fire = m_Player2_Map.FindAction("Fire", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
@@ -1136,11 +1412,21 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player_Map;
     private IPlayer_MapActions m_Player_MapActionsCallbackInterface;
     private readonly InputAction m_Player_Map_Movement;
+    private readonly InputAction m_Player_Map_Fire;
+    private readonly InputAction m_Player_Map_ScoreUp;
+    private readonly InputAction m_Player_Map_ScoreDown;
+    private readonly InputAction m_Player_Map_ScoreLeft;
+    private readonly InputAction m_Player_Map_ScoreRight;
     public struct Player_MapActions
     {
         private @PlayerActions m_Wrapper;
         public Player_MapActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Map_Movement;
+        public InputAction @Fire => m_Wrapper.m_Player_Map_Fire;
+        public InputAction @ScoreUp => m_Wrapper.m_Player_Map_ScoreUp;
+        public InputAction @ScoreDown => m_Wrapper.m_Player_Map_ScoreDown;
+        public InputAction @ScoreLeft => m_Wrapper.m_Player_Map_ScoreLeft;
+        public InputAction @ScoreRight => m_Wrapper.m_Player_Map_ScoreRight;
         public InputActionMap Get() { return m_Wrapper.m_Player_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1153,6 +1439,21 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnMovement;
+                @Fire.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnFire;
+                @ScoreUp.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreUp;
+                @ScoreUp.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreUp;
+                @ScoreUp.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreUp;
+                @ScoreDown.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreDown;
+                @ScoreDown.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreDown;
+                @ScoreDown.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreDown;
+                @ScoreLeft.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreLeft;
+                @ScoreLeft.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreLeft;
+                @ScoreLeft.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreLeft;
+                @ScoreRight.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreRight;
+                @ScoreRight.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreRight;
+                @ScoreRight.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreRight;
             }
             m_Wrapper.m_Player_MapActionsCallbackInterface = instance;
             if (instance != null)
@@ -1160,6 +1461,21 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @ScoreUp.started += instance.OnScoreUp;
+                @ScoreUp.performed += instance.OnScoreUp;
+                @ScoreUp.canceled += instance.OnScoreUp;
+                @ScoreDown.started += instance.OnScoreDown;
+                @ScoreDown.performed += instance.OnScoreDown;
+                @ScoreDown.canceled += instance.OnScoreDown;
+                @ScoreLeft.started += instance.OnScoreLeft;
+                @ScoreLeft.performed += instance.OnScoreLeft;
+                @ScoreLeft.canceled += instance.OnScoreLeft;
+                @ScoreRight.started += instance.OnScoreRight;
+                @ScoreRight.performed += instance.OnScoreRight;
+                @ScoreRight.canceled += instance.OnScoreRight;
             }
         }
     }
@@ -1169,11 +1485,21 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player2_Map;
     private IPlayer2_MapActions m_Player2_MapActionsCallbackInterface;
     private readonly InputAction m_Player2_Map_Movement;
+    private readonly InputAction m_Player2_Map_ScoreRight;
+    private readonly InputAction m_Player2_Map_ScoreLeft;
+    private readonly InputAction m_Player2_Map_ScoreDown;
+    private readonly InputAction m_Player2_Map_ScoreUp;
+    private readonly InputAction m_Player2_Map_Fire;
     public struct Player2_MapActions
     {
         private @PlayerActions m_Wrapper;
         public Player2_MapActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player2_Map_Movement;
+        public InputAction @ScoreRight => m_Wrapper.m_Player2_Map_ScoreRight;
+        public InputAction @ScoreLeft => m_Wrapper.m_Player2_Map_ScoreLeft;
+        public InputAction @ScoreDown => m_Wrapper.m_Player2_Map_ScoreDown;
+        public InputAction @ScoreUp => m_Wrapper.m_Player2_Map_ScoreUp;
+        public InputAction @Fire => m_Wrapper.m_Player2_Map_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Player2_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1186,6 +1512,21 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnMovement;
+                @ScoreRight.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreRight;
+                @ScoreRight.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreRight;
+                @ScoreRight.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreRight;
+                @ScoreLeft.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreLeft;
+                @ScoreLeft.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreLeft;
+                @ScoreLeft.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreLeft;
+                @ScoreDown.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreDown;
+                @ScoreDown.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreDown;
+                @ScoreDown.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreDown;
+                @ScoreUp.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreUp;
+                @ScoreUp.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreUp;
+                @ScoreUp.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreUp;
+                @Fire.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnFire;
             }
             m_Wrapper.m_Player2_MapActionsCallbackInterface = instance;
             if (instance != null)
@@ -1193,6 +1534,21 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @ScoreRight.started += instance.OnScoreRight;
+                @ScoreRight.performed += instance.OnScoreRight;
+                @ScoreRight.canceled += instance.OnScoreRight;
+                @ScoreLeft.started += instance.OnScoreLeft;
+                @ScoreLeft.performed += instance.OnScoreLeft;
+                @ScoreLeft.canceled += instance.OnScoreLeft;
+                @ScoreDown.started += instance.OnScoreDown;
+                @ScoreDown.performed += instance.OnScoreDown;
+                @ScoreDown.canceled += instance.OnScoreDown;
+                @ScoreUp.started += instance.OnScoreUp;
+                @ScoreUp.performed += instance.OnScoreUp;
+                @ScoreUp.canceled += instance.OnScoreUp;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
         }
     }
@@ -1338,10 +1694,20 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     public interface IPlayer_MapActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnScoreUp(InputAction.CallbackContext context);
+        void OnScoreDown(InputAction.CallbackContext context);
+        void OnScoreLeft(InputAction.CallbackContext context);
+        void OnScoreRight(InputAction.CallbackContext context);
     }
     public interface IPlayer2_MapActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnScoreRight(InputAction.CallbackContext context);
+        void OnScoreLeft(InputAction.CallbackContext context);
+        void OnScoreDown(InputAction.CallbackContext context);
+        void OnScoreUp(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

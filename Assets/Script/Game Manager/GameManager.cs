@@ -68,5 +68,9 @@ public class GameManager : MonoBehaviour
     {
         async.allowSceneActivation = true;
     }
-    
+
+    public static void SaveScore(PlayerScore playerScore)
+    {
+        throw new System.NotImplementedException();
+    }
 }
