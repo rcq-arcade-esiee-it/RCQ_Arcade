@@ -1,6 +1,7 @@
-﻿using PlasticGui.WorkspaceWindow.Merge;
+﻿using System.Diagnostics.CodeAnalysis;
+using PlasticGui.WorkspaceWindow.Merge;
 using UnityEngine;
-
+ [ExcludeFromCodeCoverage]
 [System.Serializable]
 public class GameInfo
 {

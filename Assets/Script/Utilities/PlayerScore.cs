@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using PlasticGui.WorkspaceWindow.Merge;
 using UnityEngine;
+[ExcludeFromCodeCoverage]
 
 [System.Serializable]
 public class PlayerScore

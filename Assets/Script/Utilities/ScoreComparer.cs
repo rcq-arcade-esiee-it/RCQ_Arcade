@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
+[ExcludeFromCodeCoverage]
 
 public class ScoreComparer : Comparer<PlayerScore>
 {
