@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
+[ExcludeFromCodeCoverage]
 class Shutdown
 {
     static void Main()
