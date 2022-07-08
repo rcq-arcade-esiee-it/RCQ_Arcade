@@ -23,7 +23,7 @@ coverage:
         threshold: 0.0
 ignore:
 - (?s:.*/[^\/]+Test\.cs.*)\Z
-- (?s:.*/[^\/]+Utilities\.cs.*)\Z
+- (?s:.*/[^\/]+Script/Utilities\.cs.*)\Z
 - (?s:.*/PlayerActions.*)\Z
 parsers:
   gcov:
