@@ -55,6 +55,6 @@ MonoBehaviour:
   partyFinished: 0
   stauntPlayer1: 0
   stauntPlayer2: 0
-  time: 10
+  time: 60
   ballSpawnDelay: 1
   ballSpawnTimer: 0
