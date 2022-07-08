@@ -1,44 +1,39 @@
 using System;
 using System.Diagnostics;
-namespace Script.Utilities
 
+class Shutdown
 {
-    public class Shutdown
+    static void Main()
     {
-        public static string Bash(this string cmd)
+        // lets say we want to run this command:    
+        //  t=$(echo 'this is a test'); echo "$t" | grep -o 'is a'
+        var output = ExecuteBashCommand("shutdown now");
+
+        // output the result
+        Console.WriteLine(output);
+    }
+
+    static string ExecuteBashCommand(string command)
+    {
+        // according to: https://stackoverflow.com/a/15262019/637142
+        // thans to this we will pass everything as one command
+        command = command.Replace("\"","\"\"");
+
+        var proc = new Process
         {
-            var escapedArgs = cmd.Replace("\"", "\\\"");
-
-            var process = new Process()
+            StartInfo = new ProcessStartInfo
             {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "/bash",
-                    Arguments = $"-c \"{escapedArgs}\"",
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                }
-            };
+                FileName = "/bin/bash",
+                Arguments = "-c \""+ command + "\"",
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true
+            }
+        };
 
-            process.Start();
-            string result = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
+        proc.Start();
+        proc.WaitForExit();
 
-            return result;
-        }
+        return proc.StandardOutput.ReadToEnd();
     }
-    }
-/*#!/usr/bin/csexec -r:System.Windows.Forms.dll -r:System.Drawing.dll                                                                   
-using System;                                                                                                                                
-using System.Drawing;                                                                                                                        
-using System.Windows.Forms;                                                                                                                  
-public class Program                                                                                                                         
-{                                                                                                                                            
-    public static void Main(string[] args)                                                                                                     
-    {                                                                                                                                          
-        Console.WriteLine("Hello Console");                                                                                                      
-        Console.WriteLine("Arguments: " + string.Join(", ", args));                                                                              
-        MessageBox.Show("Hello GUI");                                                                                                            
-    }                                                                                                                                          
-}        */
+}
