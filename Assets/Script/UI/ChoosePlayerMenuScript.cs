@@ -42,7 +42,7 @@ public class ChoosePlayerMenuScript : MonoBehaviour
             (playerActions.UI.Submit
              .WasPressedThisFrame()) // On valide avec la touche "entré" et on passe à la scène suivante
         {
-            GameManager.instance.LoadScene("Game1");
+            GameManager.instance.LoadScene("SelectEquipe");
         }
 
         else if

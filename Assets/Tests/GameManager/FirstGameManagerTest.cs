@@ -11,7 +11,7 @@ using UnityEngine.TestTools;
 ///     Class <c>DFirstGameManagerTest</c> representant une suite de tests d'intégrations devant êtres lancées dans un
 ///     ordre précis.
 /// </summary>
-public class EFirstGameManagerUTest : InputTestFixture
+public class FFirstGameManagerUTest : InputTestFixture
 {
     // Initialisation des composant prefab
     public GameObject bombPrefab;

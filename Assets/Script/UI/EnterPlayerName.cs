@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class EnterPlayerName : MonoBehaviour
 {
-    private PlayerActions _playerActions;
     private readonly string[] finalName = { "A", "A", "A" };
-    private string getCanvas;
-    private int indexLetter;
-    private int indexScore;
-
-    private Vector2 joystick;
 
     // Start is called before the first frame update
     private readonly string[] letters =
@@ -20,6 +14,12 @@ public class EnterPlayerName : MonoBehaviour
     };
 
     private readonly string[] score = { "FirstLetterPlayer", "SecondLetterPlayer", "ThirdLetterPlayer" };
+    private PlayerActions _playerActions;
+    private string getCanvas;
+    private int indexLetter;
+    private int indexScore;
+
+    private Vector2 joystick;
 
     private TextMeshProUGUI text;
 
@@ -41,8 +41,8 @@ public class EnterPlayerName : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (_playerActions.Player_Map.ScoreRight.WasPressedThisFrame() ||
-            _playerActions.Player2_Map.ScoreRight.WasPressedThisFrame())
+        if (_playerActions.Player_Map.ChooseRight.WasPressedThisFrame() ||
+            _playerActions.Player2_Map.ChooseRight.WasPressedThisFrame())
         {
             SelectLettersPolygon(0);
 
@@ -51,8 +51,8 @@ public class EnterPlayerName : MonoBehaviour
                 indexScore = 0;
             SelectLettersPolygon(1);
         }
-        else if (_playerActions.Player_Map.ScoreLeft.WasPressedThisFrame() ||
-                 _playerActions.Player2_Map.ScoreLeft.WasPressedThisFrame())
+        else if (_playerActions.Player_Map.ChooseLeft.WasPressedThisFrame() ||
+                 _playerActions.Player2_Map.ChooseLeft.WasPressedThisFrame())
         {
             SelectLettersPolygon(0);
 

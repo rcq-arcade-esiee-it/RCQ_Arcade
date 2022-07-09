@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ScoreLeft",
+                    "name": "ChooseLeft",
                     "type": "Button",
                     "id": "2a55a295-08b3-4eea-acd4-45d7462a4d0b",
                     "expectedControlType": "Button",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ScoreRight",
+                    "name": "ChooseRight",
                     "type": "Button",
                     "id": "6d23ef84-70c1-4a2c-b7e1-f16d62caac92",
                     "expectedControlType": "Button",
@@ -244,7 +244,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ScoreLeft",
+                    "action": "ChooseLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,7 +255,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ScoreLeft",
+                    "action": "ChooseLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -266,7 +266,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ScoreRight",
+                    "action": "ChooseRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -277,7 +277,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ScoreRight",
+                    "action": "ChooseRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -297,7 +297,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ScoreRight",
+                    "name": "ChooseRight",
                     "type": "Button",
                     "id": "ff4c150f-38c9-49e6-9b76-1efd77aa4ef4",
                     "expectedControlType": "Button",
@@ -306,7 +306,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ScoreLeft",
+                    "name": "ChooseLeft",
                     "type": "Button",
                     "id": "f9d7ac1b-9038-4467-b974-7c6ab7347e06",
                     "expectedControlType": "Button",
@@ -504,7 +504,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ScoreLeft",
+                    "action": "ChooseLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -515,7 +515,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ScoreRight",
+                    "action": "ChooseRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
