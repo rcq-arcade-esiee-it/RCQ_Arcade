@@ -6,8 +6,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
-/// <summary>Class <c>DFirstGameManagerTest</c> representant une suite de tests devant êtres lancées dans un ordre précis.</summary>
-public class EFirstGameManagerTest : InputTestFixture
+/// <summary>Class <c>DFirstGameManagerTest</c> representant une suite de tests d'intégrations devant êtres lancées dans un ordre précis.</summary>
+public class EFirstGameManagerUTest : InputTestFixture
 {
     
     // Variables d'environnement de test
@@ -172,7 +172,8 @@ public class EFirstGameManagerTest : InputTestFixture
         Assert.IsTrue(player.Speed == 0);
         yield return new WaitForSecondsRealtime(4);
 
-
+        // Partie affichage des scores
+        Assert.IsTrue(GameObject.Find("MainCanvas/ScoreCanvas/OnePlayerGameCanvas").activeSelf);
         yield return null;
     }
     [UnityTest]
@@ -205,7 +206,11 @@ public class EFirstGameManagerTest : InputTestFixture
         Assert.IsTrue(player1.Speed == 0);
 
         Assert.IsFalse(player1.isWinner);
-        
+        // Écran de nommage des scores
+        yield return new WaitForSecondsRealtime(1);
+
+       
+
     }
     
     [UnityTest]

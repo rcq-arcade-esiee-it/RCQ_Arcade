@@ -10,9 +10,8 @@ public class GameInfoScript : MonoBehaviour
     {
         GameInfo gameInfo
             = GameManager.gameInfo;
-        Debug.Log(gameInfo.description);
-        GameObject.Find("GameInfoCanvas/Title").GetComponent<TextMeshProUGUI>().text = gameInfo.title;
-        GameObject.Find("GameInfoCanvas/Description").GetComponent<TextMeshProUGUI>().text = gameInfo.description;
+        GameObject.Find("GameInfoCanvas/Title").GetComponent<TextMeshProUGUI>().text = gameInfo.Title;
+        GameObject.Find("GameInfoCanvas/Description").GetComponent<TextMeshProUGUI>().text = gameInfo.Description;
     }
 
     
