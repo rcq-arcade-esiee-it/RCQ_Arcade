@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+
 /// <summary>Class <c>UICount</c> représentant le timer du jeu </summary>
 public class UICount : MonoBehaviour
 {

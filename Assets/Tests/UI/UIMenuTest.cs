@@ -6,22 +6,24 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+
 /// <summary>Class <c>CUIMenuTest</c> representant une suite de tests devant êtres lancées dans un ordre précis.</summary>
 public class CUIMenuTest : InputTestFixture
 {
     // Variables d'environnement de test
     private string firstGameScenePath;
     private GameManager gameManager;
+
+    // Initialisation des composant prefab
+    private GameObject gameManagerPrefab;
     private string gameMenuScenePath;
     private Keyboard keyboard;
     private LoadSceneParameters loadSceneParameters;
-    
-    // Initialisation des composant prefab
-    private GameObject gameManagerPrefab;
     private GameObject mainCanvasPrefab;
-    
-    /// <summary>Cette méthode met en place les différents prefabs et objets dont auront besoin les tests
-    /// </summary>   
+
+    /// <summary>
+    ///     Cette méthode met en place les différents prefabs et objets dont auront besoin les tests
+    /// </summary>
     public override void Setup()
 
     {

@@ -1,4 +1,5 @@
-AAA 0
-AAA 0
-ADF 0
-ADH -5
+AAA 1
+GHH 1
+DEC -2
+PNO -3
+DEG -3

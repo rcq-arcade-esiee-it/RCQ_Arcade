@@ -1,24 +1,21 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UI;
+
 /// <summary>Class <c>UIMenuScript</c> représentant les selections pouvant êtres faites dans le menu des jeux </summary>
 public class UIMenuScript : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
-    
     private AudioSource audio;
 
     private void Start()
     {
         audio = GetComponent<AudioSource>();
     }
-    
 
 
-    /// <summary>Cette méthode supprime modifie l'objet déselectionné avec plusieurs critères
+    /// <summary>
+    ///     Cette méthode supprime modifie l'objet déselectionné avec plusieurs critères
     /// </summary>
     public void OnDeselect(BaseEventData eventData)
     {
@@ -29,7 +26,8 @@ public class UIMenuScript : MonoBehaviour, ISelectHandler, IDeselectHandler
         gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(290, 258);
     }
 
-    /// <summary>Cette méthode  modifie l'objet selectionné avec plusieurs critères
+    /// <summary>
+    ///     Cette méthode  modifie l'objet selectionné avec plusieurs critères
     /// </summary>
     public void OnSelect(BaseEventData eventData)
     {
@@ -43,8 +41,9 @@ public class UIMenuScript : MonoBehaviour, ISelectHandler, IDeselectHandler
         audio.Play();
     }
 
-    /// <summary>Cette méthode  permet de connaitre le nom du composant selectionné
-    /// <returns> le nom du panneau</returns>
+    /// <summary>
+    ///     Cette méthode  permet de connaitre le nom du composant selectionné
+    ///     <returns> le nom du panneau</returns>
     /// </summary>
     private string panelSelected(string name)
     {

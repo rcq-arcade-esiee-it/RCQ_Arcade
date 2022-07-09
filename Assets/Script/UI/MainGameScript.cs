@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 /// <summary>Class <c>MainGameScript</c> représentant la partie interaction avec le premier écran.</summary>
 public class MainGameScript : MonoBehaviour
 {
-    
+    public static bool testing = false;
+
     private AudioSource audioWhistle;
+
     private double timer;
 
-    public static bool testing = false;
     // Start is called before the first frame update
     private void Start()
     {
@@ -19,14 +20,11 @@ public class MainGameScript : MonoBehaviour
         audioWhistle = GetComponent<AudioSource>();
         // En cas de test, la fonction est ignoré pour cause de surcharge
         if (!testing)
-        {
             InputSystem.onAnyButtonPress.CallOnce(control =>
             {
                 if (!audioWhistle.isPlaying) audioWhistle.Play();
                 Invoke("ChangeMenu", 1);
             });
-        }
-        
     }
 
     /// <summary>Cette méthode fais clignoter le texte et lance un audio lors du clique d'une touche </summary>
@@ -34,16 +32,10 @@ public class MainGameScript : MonoBehaviour
     {
         blinkText();
         if (testing)
-        {
             if (Keyboard.current.anyKey.wasPressedThisFrame)
-            {
                 Invoke("ChangeMenu", 1);
-            }
-        }
-
     }
-    
-    
+
 
     private void blinkText()
     {
@@ -56,8 +48,8 @@ public class MainGameScript : MonoBehaviour
             timer = 0;
         }
     }
-    /// <summary>Cette méthode permet  de changer de menu </summary>
 
+    /// <summary>Cette méthode permet  de changer de menu </summary>
     private void ChangeMenu()
     {
         SceneManager.LoadScene("Scenes/GameMenu", LoadSceneMode.Single);
