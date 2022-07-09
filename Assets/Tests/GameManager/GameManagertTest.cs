@@ -4,8 +4,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
-/// <summary>Class <c>BGameManagerTest</c> representant une suite de tests devant êtres lancées dans un ordre précis.</summary>
-public class BGameManagerTest
+/// <summary>Class <c>BGameManagerTest</c> representant une suite de tests d'intégrations devant êtres lancées dans un ordre précis.</summary>
+public class BGameManagerUTest
 {
     // Variables d'environnement de test
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             instance = GetComponent<GameManager>();
             SceneManager.sceneLoaded += OnLevelFinishedLoading;
+            twoPlayers = false;
+
         }
         else
         {
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
         }
 
         Cursor.visible = true;
+     
     }
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -52,8 +56,8 @@ public class GameManager : MonoBehaviour
     public void LoadSceneWithParameters(string parameters)
     {
         GameManager.gameInfo = GameInfo.CreateFromJSON(parameters);
-        Debug.Log(gameInfo.description);
-        LoadScene(gameInfo.gameInfoScene);
+        Debug.Log(gameInfo.Description);
+        LoadScene(gameInfo.GameInfoScene);
 
     }
     private IEnumerator Load(string sceneName)

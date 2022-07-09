@@ -21,10 +21,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Game1.unity
     guid: 9a0ca699f22e4524aaf0f0bfce3de903
   - enabled: 1
-    path: Assets/Scenes/Aff_Score.unity
-    guid: cedd2b3d5fde555419e5277f911542ea
-  - enabled: 1
     path: Assets/Scenes/Score.unity
     guid: b5f9acb903decaf4ba1ad36eddb7bcff
+  - enabled: 1
+    path: Assets/Scenes/Aff_Score.unity
+    guid: cedd2b3d5fde555419e5277f911542ea
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d7ff8607c762a5046bc5d2242cad68d7, type: 2}
