@@ -6,29 +6,33 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
-/// <summary>Class <c>DFirstGameManagerTest</c> representant une suite de tests d'intégrations devant êtres lancées dans un ordre précis.</summary>
+
+/// <summary>
+///     Class <c>DFirstGameManagerTest</c> representant une suite de tests d'intégrations devant êtres lancées dans un
+///     ordre précis.
+/// </summary>
 public class EFirstGameManagerUTest : InputTestFixture
 {
-    
-    // Variables d'environnement de test
-    private LoadSceneParameters loadSceneParameters;
-    private string firstGameScenePath;
-    private Keyboard keyboard;
-    private GameManager gameManager;
-
     // Initialisation des composant prefab
     public GameObject bombPrefab;
     private GameObject firstGameManagerPrefab;
+    private string firstGameScenePath;
+    private GameManager gameManager;
     private GameObject gameManagerPrefab;
+    private Keyboard keyboard;
+
+    // Variables d'environnement de test
+    private LoadSceneParameters loadSceneParameters;
     private GameObject mainCanvasPrefab;
-    private GameObject playerPrefab;
     private GameObject player2Prefab;
+    private GameObject playerPrefab;
 
     public GameObject rugbyBallPrefab;
 
 
-    /// <summary>Cette méthode met en place les différents prefabs et objets dont auront besoin les tests
-    /// </summary>   
+    /// <summary>
+    ///     Cette méthode met en place les différents prefabs et objets dont auront besoin les tests
+    /// </summary>
     public override void Setup()
     {
         base.Setup();
@@ -56,8 +60,6 @@ public class EFirstGameManagerUTest : InputTestFixture
             .GetComponent<TestsReferences>().bombPrefab;
         mainCanvasPrefab = ((GameObject)Resources.Load("TestsReferences", typeof(GameObject)))
             .GetComponent<TestsReferences>().mainCanvasPrefab;
-        
-
     }
 
     //Enleve tout objet de la scene
@@ -92,7 +94,7 @@ public class EFirstGameManagerUTest : InputTestFixture
     [UnityTest]
     public IEnumerator _02_FirstGameManagerCanSpawnPlayerOnLoad()
     {
-        FirstGameManager.InitializeTestingEnvironment(false, false , false, true, false);
+        FirstGameManager.InitializeTestingEnvironment(false, false, false, true, false);
 
         Object.Instantiate(firstGameManagerPrefab).GetComponent<FirstGameManager>();
         FirstGameManager.InitializeTestingEnvironment(true, false, false, true, false);
@@ -132,7 +134,7 @@ public class EFirstGameManagerUTest : InputTestFixture
 
         yield return null;
     }
-    
+
     [UnityTest]
     public IEnumerator _05_FirstGameManagerPlayerIsStauntAfterTouchedByBomb()
     {
@@ -153,7 +155,7 @@ public class EFirstGameManagerUTest : InputTestFixture
 
         yield return null;
     }
-    
+
     [UnityTest]
     public IEnumerator _06_FirstGameManagerPlayerWinIfScoreIs15()
     {
@@ -176,26 +178,27 @@ public class EFirstGameManagerUTest : InputTestFixture
         Assert.IsTrue(GameObject.Find("MainCanvas/ScoreCanvas/OnePlayerGameCanvas").activeSelf);
         yield return null;
     }
+
     [UnityTest]
     public IEnumerator _07_FirstGameManagerReturnLoseIfScoreIsLessThan15()
-    {        
+    {
         LogAssert.ignoreFailingMessages = true;
 
         FirstGameManager.InitializeTestingEnvironment(false, true, true, true, false);
-        
+
         Object.Instantiate(firstGameManagerPrefab);
 
         yield return new WaitForSecondsRealtime(1);
 
         EditorSceneManager.LoadSceneInPlayMode(firstGameScenePath, loadSceneParameters);
         yield return new WaitForSecondsRealtime(1);
-        
+
 
         var player1 = Object.FindObjectOfType<Player1Controller>();
 
- 
+
         FirstGameManager.instance.time = 3;
-        
+
         FirstGameManager.instance.scorePlayer1 = 2;
         yield return new WaitForSecondsRealtime(4);
 
@@ -208,99 +211,91 @@ public class EFirstGameManagerUTest : InputTestFixture
         Assert.IsFalse(player1.isWinner);
         // Écran de nommage des scores
         yield return new WaitForSecondsRealtime(1);
-
-       
-
     }
-    
+
     [UnityTest]
     public IEnumerator _08_FirstGameManagerReturnWithTwoPlayers()
-    {        
+    {
         LogAssert.ignoreFailingMessages = true;
 
         FirstGameManager.InitializeTestingEnvironment(false, true, true, true, true);
-        
+
         Object.Instantiate(firstGameManagerPrefab);
 
         yield return new WaitForSecondsRealtime(1);
 
         EditorSceneManager.LoadSceneInPlayMode(firstGameScenePath, loadSceneParameters);
         yield return new WaitForSecondsRealtime(1);
-        
+
 
         var player1 = Object.FindObjectOfType<Player1Controller>();
         var player2 = Object.FindObjectOfType<Player2Controller>();
-        
+
         Assert.IsNotNull(player1);
         Assert.IsNotNull(player2);
-
     }
-    
+
     [UnityTest]
     public IEnumerator _09_FirstGameManagerPlayer1WinIfScoreIsMoreThanPlayer2()
-    {        
+    {
         LogAssert.ignoreFailingMessages = true;
 
         var player1 = Object.FindObjectOfType<Player1Controller>();
         var player2 = Object.FindObjectOfType<Player2Controller>();
-        
+
         yield return new WaitForSecondsRealtime(1);
-        
+
         var bomb = Object.Instantiate(bombPrefab, new Vector2(3230, 363), Quaternion.identity)
             .GetComponent<BombController>();
 
         yield return new WaitForSeconds(3);
 
         Assert.IsFalse(FirstGameManager.instance.stauntPlayer1);
-        
+
         FirstGameManager.instance.time = 3;
-        
+
         FirstGameManager.instance.scorePlayer1 = 20;
         yield return new WaitForSecondsRealtime(4);
 
-     
+
         Assert.IsTrue(FirstGameManager.instance.partyFinished);
-        
+
         Assert.IsTrue(player1.isWinner);
         Assert.IsTrue(!player2.isWinner);
-
-
     }
-    
+
     [UnityTest]
     public IEnumerator _10_FirstGameManagerPlayer2WinIfScoreIsMoreThanPlayer1()
-    {        
+    {
         LogAssert.ignoreFailingMessages = true;
 
         FirstGameManager.InitializeTestingEnvironment(false, true, true, true, true);
-        
+
         Object.Instantiate(firstGameManagerPrefab);
 
         yield return new WaitForSecondsRealtime(1);
 
         EditorSceneManager.LoadSceneInPlayMode(firstGameScenePath, loadSceneParameters);
         yield return new WaitForSecondsRealtime(1);
-        
+
 
         var player1 = Object.FindObjectOfType<Player1Controller>();
         var player2 = Object.FindObjectOfType<Player2Controller>();
-        
 
-    
+
         yield return new WaitForSeconds(3);
 
-        
+
         FirstGameManager.instance.time = 3;
-        
+
         FirstGameManager.instance.scorePlayer2 = 20;
         yield return new WaitForSecondsRealtime(4);
 
-   
+
         Assert.IsTrue(FirstGameManager.instance.partyFinished);
 
 
         Assert.IsTrue(player2.isWinner);
         Assert.IsTrue(!player1.isWinner);
-
     }
 }

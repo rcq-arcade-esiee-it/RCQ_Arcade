@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 [ExcludeFromCodeCoverage]
-
 public class ScoreComparer : Comparer<PlayerScore>
 {
     public override int Compare(PlayerScore x, PlayerScore y)
@@ -11,4 +9,3 @@ public class ScoreComparer : Comparer<PlayerScore>
         return y.Score.CompareTo(x.Score);
     }
 }
-

@@ -1,27 +1,23 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using UnityEditor;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
- [ExcludeFromCodeCoverage]
-[System.Serializable]
+
+[ExcludeFromCodeCoverage]
+[Serializable]
 public class GameInfo
 {
-    
-    [SerializeField]
-    private string title;
-    [SerializeField]
+    [SerializeField] private string title;
 
-    private string description;
-    [SerializeField]
+    [SerializeField] private string description;
 
-    private bool playerTwoModeAvailable;
-    [SerializeField]
+    [SerializeField] private bool playerTwoModeAvailable;
 
-    private string gameInfoScene;
-    [SerializeField]
+    [SerializeField] private string gameInfoScene;
 
-    private string gameScene;
+    [SerializeField] private string gameScene;
 
-    public GameInfo(string title, string description, bool playerTwoModeAvailable, string gameInfoScene, string gameScene)
+    public GameInfo(string title, string description, bool playerTwoModeAvailable, string gameInfoScene,
+        string gameScene)
     {
         this.title = title;
         this.description = description;
@@ -30,7 +26,7 @@ public class GameInfo
         this.gameScene = gameScene;
     }
 
-    public  string Title
+    public string Title
     {
         get => title;
         set => title = value;

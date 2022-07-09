@@ -7,21 +7,23 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+
 /// <summary>Class <c>AGameFirstStartTest</c> representant une suite de tests devant êtres lancées dans un ordre précis.</summary>
 public class AGameFirstStartTest : InputTestFixture
 {
-    
     // Variables d'environnement de test
     private TextMeshProUGUI _textMeshProUGUI;
     private Keyboard keyboard;
+
     private LoadSceneParameters loadSceneParameters;
-    private string mainScreenScenePath;
     // Initialisation des composant prefab
 
     private GameObject mainCanvasPrefab;
+    private string mainScreenScenePath;
 
-    /// <summary>Cette méthode met en place les différents prefabs et objets dont auront besoin les tests
-    /// </summary>   
+    /// <summary>
+    ///     Cette méthode met en place les différents prefabs et objets dont auront besoin les tests
+    /// </summary>
     public override void Setup()
     {
         base.Setup();
@@ -39,6 +41,8 @@ public class AGameFirstStartTest : InputTestFixture
     [UnityTest]
     public IEnumerator _00_MainCanvasExistsInScene()
     {
+        GameManager.gameInfo = null;
+
         EditorSceneManager.LoadSceneInPlayMode(mainScreenScenePath, loadSceneParameters);
 
         yield return null;
@@ -81,6 +85,5 @@ public class AGameFirstStartTest : InputTestFixture
         sceneName = SceneManager.GetActiveScene().name;
         Assert.That(sceneName, Is.EqualTo("GameMenu"));
         MainGameScript.testing = false;
-
     }
 }

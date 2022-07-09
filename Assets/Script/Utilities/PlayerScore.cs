@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using PlasticGui.WorkspaceWindow.Merge;
 using UnityEngine;
-[ExcludeFromCodeCoverage]
 
-[System.Serializable]
+[ExcludeFromCodeCoverage]
+[Serializable]
 public class PlayerScore
 {
     // Pour enregistrer le score d'une partie
-    private static string player1Name="";
+    private static string player1Name = "";
     private static int score1;
-    private static string player2Name ="";
+    private static string player2Name = "";
     private static int score2;
-    private static List<PlayerScore> scores =  new List<PlayerScore>();
+    private static List<PlayerScore> scores = new();
 
     // Pour accèder aux scores d'une partie
     private string name;
@@ -63,44 +61,35 @@ public class PlayerScore
         set => score = value;
     }
 
-    public static void saveScoreToCurrentGame(String gameName)
+    public static void saveScoreToCurrentGame(string gameName)
     {
-        if (player1Name.Length > 0 )  scores.Add(new PlayerScore(player1Name,score1));
-        if (player2Name.Length > 0 )
-            scores.Add(new PlayerScore(player2Name,score2));
-
+        if (player1Name.Length > 0) scores.Add(new PlayerScore(player1Name, score1));
+        if (player2Name.Length > 0)
+            scores.Add(new PlayerScore(player2Name, score2));
 
 
         // Étape 1 : Récuperer le fichier des scores en fonction du nom du jeu
-        int varTemp = 0;
-        string fileName = Application.dataPath + "/Saves/" + "score_"+ gameName+".txt";
-        TextReader reader;
-        reader = new  StreamReader(fileName);
-        string line;
-        while (true)
+        var varTemp = 0;
+        var fileName = Application.dataPath + "/Saves/" + "score_" + gameName + ".txt";
+        // Si le fichier n'existe pas, il est crée
+        var streamWriter = File.Exists(fileName) ? File.AppendText(fileName) : File.CreateText(fileName);
+        streamWriter.Close();
+        using (var sr = new StreamReader(fileName))
         {
-            // lecture de la ligne
-            line=reader.ReadLine();
-            // si la ligne est vide on arrête
-            if (line==null ) break;
-            // on affiche la ligne
-            
-            if(line.Length>0) scores.Add(new PlayerScore(line.Split(" ")[0],Int16.Parse(line.Split(" ")[1]))) ;
-                
+            string line;
+            while ((line = sr.ReadLine()) != null)
+                if (line.Length > 0)
+                    scores.Add(new PlayerScore(line.Split(" ")[0], short.Parse(line.Split(" ")[1])));
         }
-        reader.Close();
-        // Étape 2 : Met tout dans un nouveu tableu de PlayerScore et vide le fichier txt
+
         scores.Sort(new ScoreComparer());
-        // Étape 3 :  Trier ce tableau
-        // Étape 4: Remettre lme tableau dans le txt
-        
-        TextWriter tw = new StreamWriter(fileName, false);
-        tw.Write(string.Empty);
-        foreach (var  player in scores)
+        File.WriteAllText(fileName, string.Empty);
+        using (var sw = File.AppendText(fileName))
         {
-            tw.Write(player.Name + " " + player.Score + "\n");
+            foreach (var player in scores) sw.WriteLine(player.Name + " " + player.Score);
         }
-        tw.Close();
+
+
         Erase();
     }
 
@@ -110,10 +99,7 @@ public class PlayerScore
 
         player1Name = "";
         player2Name = "";
-        score1 = 0 ;
+        score1 = 0;
         score2 = 0;
-
-
-
     }
 }
