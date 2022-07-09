@@ -157,5 +157,7 @@ public class GPlayerScoreITest : InputTestFixture
         var sceneName = SceneManager.GetActiveScene().name;
 
         Assert.That(sceneName, Is.EqualTo("GameMenu"));
+
+        GameManager.gameInfo = null;
     }
 }

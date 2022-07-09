@@ -41,6 +41,8 @@ public class AGameFirstStartTest : InputTestFixture
     [UnityTest]
     public IEnumerator _00_MainCanvasExistsInScene()
     {
+        GameManager.gameInfo = null;
+
         EditorSceneManager.LoadSceneInPlayMode(mainScreenScenePath, loadSceneParameters);
 
         yield return null;
