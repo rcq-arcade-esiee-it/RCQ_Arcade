@@ -58,7 +58,7 @@ public class DSelectionTwoPlayerTest : InputTestFixture
         Press(keyboard.enterKey);
         yield return new WaitForSeconds(2f);
         Assert.That(SceneManager.GetActiveScene().name
-                    == "Game1");
+                    == "SelectEquipe");
     }
 
     [UnityTest]

@@ -64,7 +64,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ScoreLeft"",
+                    ""name"": ""ChooseLeft"",
                     ""type"": ""Button"",
                     ""id"": ""2a55a295-08b3-4eea-acd4-45d7462a4d0b"",
                     ""expectedControlType"": ""Button"",
@@ -73,7 +73,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ScoreRight"",
+                    ""name"": ""ChooseRight"",
                     ""type"": ""Button"",
                     ""id"": ""6d23ef84-70c1-4a2c-b7e1-f16d62caac92"",
                     ""expectedControlType"": ""Button"",
@@ -266,7 +266,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ScoreLeft"",
+                    ""action"": ""ChooseLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -277,7 +277,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ScoreLeft"",
+                    ""action"": ""ChooseLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -288,7 +288,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ScoreRight"",
+                    ""action"": ""ChooseRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -299,7 +299,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ScoreRight"",
+                    ""action"": ""ChooseRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -319,7 +319,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ScoreRight"",
+                    ""name"": ""ChooseRight"",
                     ""type"": ""Button"",
                     ""id"": ""ff4c150f-38c9-49e6-9b76-1efd77aa4ef4"",
                     ""expectedControlType"": ""Button"",
@@ -328,7 +328,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ScoreLeft"",
+                    ""name"": ""ChooseLeft"",
                     ""type"": ""Button"",
                     ""id"": ""f9d7ac1b-9038-4467-b974-7c6ab7347e06"",
                     ""expectedControlType"": ""Button"",
@@ -526,7 +526,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ScoreLeft"",
+                    ""action"": ""ChooseLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -537,7 +537,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ScoreRight"",
+                    ""action"": ""ChooseRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1327,13 +1327,13 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_Player_Map_Fire = m_Player_Map.FindAction("Fire", throwIfNotFound: true);
         m_Player_Map_ScoreUp = m_Player_Map.FindAction("ScoreUp", throwIfNotFound: true);
         m_Player_Map_ScoreDown = m_Player_Map.FindAction("ScoreDown", throwIfNotFound: true);
-        m_Player_Map_ScoreLeft = m_Player_Map.FindAction("ScoreLeft", throwIfNotFound: true);
-        m_Player_Map_ScoreRight = m_Player_Map.FindAction("ScoreRight", throwIfNotFound: true);
+        m_Player_Map_ChooseLeft = m_Player_Map.FindAction("ChooseLeft", throwIfNotFound: true);
+        m_Player_Map_ChooseRight = m_Player_Map.FindAction("ChooseRight", throwIfNotFound: true);
         // Player2_Map
         m_Player2_Map = asset.FindActionMap("Player2_Map", throwIfNotFound: true);
         m_Player2_Map_Movement = m_Player2_Map.FindAction("Movement", throwIfNotFound: true);
-        m_Player2_Map_ScoreRight = m_Player2_Map.FindAction("ScoreRight", throwIfNotFound: true);
-        m_Player2_Map_ScoreLeft = m_Player2_Map.FindAction("ScoreLeft", throwIfNotFound: true);
+        m_Player2_Map_ChooseRight = m_Player2_Map.FindAction("ChooseRight", throwIfNotFound: true);
+        m_Player2_Map_ChooseLeft = m_Player2_Map.FindAction("ChooseLeft", throwIfNotFound: true);
         m_Player2_Map_ScoreDown = m_Player2_Map.FindAction("ScoreDown", throwIfNotFound: true);
         m_Player2_Map_ScoreUp = m_Player2_Map.FindAction("ScoreUp", throwIfNotFound: true);
         m_Player2_Map_Fire = m_Player2_Map.FindAction("Fire", throwIfNotFound: true);
@@ -1415,8 +1415,8 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Map_Fire;
     private readonly InputAction m_Player_Map_ScoreUp;
     private readonly InputAction m_Player_Map_ScoreDown;
-    private readonly InputAction m_Player_Map_ScoreLeft;
-    private readonly InputAction m_Player_Map_ScoreRight;
+    private readonly InputAction m_Player_Map_ChooseLeft;
+    private readonly InputAction m_Player_Map_ChooseRight;
     public struct Player_MapActions
     {
         private @PlayerActions m_Wrapper;
@@ -1425,8 +1425,8 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Map_Fire;
         public InputAction @ScoreUp => m_Wrapper.m_Player_Map_ScoreUp;
         public InputAction @ScoreDown => m_Wrapper.m_Player_Map_ScoreDown;
-        public InputAction @ScoreLeft => m_Wrapper.m_Player_Map_ScoreLeft;
-        public InputAction @ScoreRight => m_Wrapper.m_Player_Map_ScoreRight;
+        public InputAction @ChooseLeft => m_Wrapper.m_Player_Map_ChooseLeft;
+        public InputAction @ChooseRight => m_Wrapper.m_Player_Map_ChooseRight;
         public InputActionMap Get() { return m_Wrapper.m_Player_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1448,12 +1448,12 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @ScoreDown.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreDown;
                 @ScoreDown.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreDown;
                 @ScoreDown.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreDown;
-                @ScoreLeft.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreLeft;
-                @ScoreLeft.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreLeft;
-                @ScoreLeft.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreLeft;
-                @ScoreRight.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreRight;
-                @ScoreRight.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreRight;
-                @ScoreRight.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnScoreRight;
+                @ChooseLeft.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnChooseLeft;
+                @ChooseLeft.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnChooseLeft;
+                @ChooseLeft.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnChooseLeft;
+                @ChooseRight.started -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnChooseRight;
+                @ChooseRight.performed -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnChooseRight;
+                @ChooseRight.canceled -= m_Wrapper.m_Player_MapActionsCallbackInterface.OnChooseRight;
             }
             m_Wrapper.m_Player_MapActionsCallbackInterface = instance;
             if (instance != null)
@@ -1470,12 +1470,12 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @ScoreDown.started += instance.OnScoreDown;
                 @ScoreDown.performed += instance.OnScoreDown;
                 @ScoreDown.canceled += instance.OnScoreDown;
-                @ScoreLeft.started += instance.OnScoreLeft;
-                @ScoreLeft.performed += instance.OnScoreLeft;
-                @ScoreLeft.canceled += instance.OnScoreLeft;
-                @ScoreRight.started += instance.OnScoreRight;
-                @ScoreRight.performed += instance.OnScoreRight;
-                @ScoreRight.canceled += instance.OnScoreRight;
+                @ChooseLeft.started += instance.OnChooseLeft;
+                @ChooseLeft.performed += instance.OnChooseLeft;
+                @ChooseLeft.canceled += instance.OnChooseLeft;
+                @ChooseRight.started += instance.OnChooseRight;
+                @ChooseRight.performed += instance.OnChooseRight;
+                @ChooseRight.canceled += instance.OnChooseRight;
             }
         }
     }
@@ -1485,8 +1485,8 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player2_Map;
     private IPlayer2_MapActions m_Player2_MapActionsCallbackInterface;
     private readonly InputAction m_Player2_Map_Movement;
-    private readonly InputAction m_Player2_Map_ScoreRight;
-    private readonly InputAction m_Player2_Map_ScoreLeft;
+    private readonly InputAction m_Player2_Map_ChooseRight;
+    private readonly InputAction m_Player2_Map_ChooseLeft;
     private readonly InputAction m_Player2_Map_ScoreDown;
     private readonly InputAction m_Player2_Map_ScoreUp;
     private readonly InputAction m_Player2_Map_Fire;
@@ -1495,8 +1495,8 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         private @PlayerActions m_Wrapper;
         public Player2_MapActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player2_Map_Movement;
-        public InputAction @ScoreRight => m_Wrapper.m_Player2_Map_ScoreRight;
-        public InputAction @ScoreLeft => m_Wrapper.m_Player2_Map_ScoreLeft;
+        public InputAction @ChooseRight => m_Wrapper.m_Player2_Map_ChooseRight;
+        public InputAction @ChooseLeft => m_Wrapper.m_Player2_Map_ChooseLeft;
         public InputAction @ScoreDown => m_Wrapper.m_Player2_Map_ScoreDown;
         public InputAction @ScoreUp => m_Wrapper.m_Player2_Map_ScoreUp;
         public InputAction @Fire => m_Wrapper.m_Player2_Map_Fire;
@@ -1512,12 +1512,12 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnMovement;
-                @ScoreRight.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreRight;
-                @ScoreRight.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreRight;
-                @ScoreRight.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreRight;
-                @ScoreLeft.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreLeft;
-                @ScoreLeft.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreLeft;
-                @ScoreLeft.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreLeft;
+                @ChooseRight.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnChooseRight;
+                @ChooseRight.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnChooseRight;
+                @ChooseRight.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnChooseRight;
+                @ChooseLeft.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnChooseLeft;
+                @ChooseLeft.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnChooseLeft;
+                @ChooseLeft.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnChooseLeft;
                 @ScoreDown.started -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreDown;
                 @ScoreDown.performed -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreDown;
                 @ScoreDown.canceled -= m_Wrapper.m_Player2_MapActionsCallbackInterface.OnScoreDown;
@@ -1534,12 +1534,12 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @ScoreRight.started += instance.OnScoreRight;
-                @ScoreRight.performed += instance.OnScoreRight;
-                @ScoreRight.canceled += instance.OnScoreRight;
-                @ScoreLeft.started += instance.OnScoreLeft;
-                @ScoreLeft.performed += instance.OnScoreLeft;
-                @ScoreLeft.canceled += instance.OnScoreLeft;
+                @ChooseRight.started += instance.OnChooseRight;
+                @ChooseRight.performed += instance.OnChooseRight;
+                @ChooseRight.canceled += instance.OnChooseRight;
+                @ChooseLeft.started += instance.OnChooseLeft;
+                @ChooseLeft.performed += instance.OnChooseLeft;
+                @ChooseLeft.canceled += instance.OnChooseLeft;
                 @ScoreDown.started += instance.OnScoreDown;
                 @ScoreDown.performed += instance.OnScoreDown;
                 @ScoreDown.canceled += instance.OnScoreDown;
@@ -1697,14 +1697,14 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnScoreUp(InputAction.CallbackContext context);
         void OnScoreDown(InputAction.CallbackContext context);
-        void OnScoreLeft(InputAction.CallbackContext context);
-        void OnScoreRight(InputAction.CallbackContext context);
+        void OnChooseLeft(InputAction.CallbackContext context);
+        void OnChooseRight(InputAction.CallbackContext context);
     }
     public interface IPlayer2_MapActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnScoreRight(InputAction.CallbackContext context);
-        void OnScoreLeft(InputAction.CallbackContext context);
+        void OnChooseRight(InputAction.CallbackContext context);
+        void OnChooseLeft(InputAction.CallbackContext context);
         void OnScoreDown(InputAction.CallbackContext context);
         void OnScoreUp(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);

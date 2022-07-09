@@ -53,6 +53,7 @@ MonoBehaviour:
   gameMenuScene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
   twoPlayerScene: {fileID: 102900000, guid: f1e6445c44494e649885cd299c454a75, type: 3}
   firstGameScene: {fileID: 102900000, guid: 9a0ca699f22e4524aaf0f0bfce3de903, type: 3}
+  SelectEquipeScene: {fileID: 102900000, guid: 096fcd095cdabf0db93a3dc8746311ba, type: 3}
   scoreNameScene: {fileID: 102900000, guid: b5f9acb903decaf4ba1ad36eddb7bcff, type: 3}
   scoreViewScene: {fileID: 102900000, guid: cedd2b3d5fde555419e5277f911542ea, type: 3}
   rugbyBallPrefab: {fileID: 8826489472049016286, guid: fb592c51e92276a459dc808ff4006982, type: 3}

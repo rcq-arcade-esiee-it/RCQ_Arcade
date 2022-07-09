@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Aff_Score.unity
     guid: cedd2b3d5fde555419e5277f911542ea
+  - enabled: 1
+    path: Assets/Scenes/SelectEquipe.unity
+    guid: 096fcd095cdabf0db93a3dc8746311ba
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d7ff8607c762a5046bc5d2242cad68d7, type: 2}

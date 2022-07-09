@@ -1,5 +1,10 @@
+BCD 24
 AAA 1
 GHH 1
+CDA 0
+AAA 0
 DEC -2
 PNO -3
 DEG -3
+BCD -4
+AAA -6
