@@ -72,7 +72,12 @@ public class PlayerScore
 
         // Étape 1 : Récuperer le fichier des scores en fonction du nom du jeu
         var varTemp = 0;
-        var fileName = Application.dataPath + "/Saves/" + "score_" + gameName + ".txt";
+
+        if (!Directory.Exists(Application.dataPath + "/Resources/Saves"))
+            Directory.CreateDirectory(Application.dataPath + "/Resources/Saves");
+
+
+        var fileName = Application.dataPath + "/Resources/Saves/" + "score_" + gameName + ".txt";
         // Si le fichier n'existe pas, il est crée
         var streamWriter = File.Exists(fileName) ? File.AppendText(fileName) : File.CreateText(fileName);
         streamWriter.Close();

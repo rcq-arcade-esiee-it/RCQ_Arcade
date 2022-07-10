@@ -14,7 +14,7 @@ public class AffScore : MonoBehaviour
 
         var varTemp = 0;
         var nbScores = 0;
-        var fileName = Application.dataPath + "/Saves/" + "score_" + GameManager.gameInfo.GameScene + ".txt";
+        var fileName = Application.dataPath + "/Resources/Saves/" + "score_" + GameManager.gameInfo.GameScene + ".txt";
         TextReader reader;
         reader = new StreamReader(fileName);
         string line;
