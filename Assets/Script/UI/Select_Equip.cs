@@ -28,13 +28,12 @@ public class Select_Equip : MonoBehaviour
 
         choixj1.rectTransform.anchoredPosition = new Vector2(-177, -37);
         GameManager.instance.choixequipej1 = 2;
+        choixj2.rectTransform.anchoredPosition = new Vector2(-120f, -37f);
+        GameManager.instance.choixequipej2 = 2;
         if (GameManager.twoPlayers == false)
-        {
-            choixj2.rectTransform.anchoredPosition = new Vector2(-120f, -37f);
-            choixj2.color = new Color(255, 255, 255, 0f);
-            GameManager.instance.choixequipej2 = 2;
-        }
-
+            { 
+                choixj2.color = new Color(255, 255, 255, 0f);
+            }
         MajMaillot1();
         MajMaillot2();
         MajMaillot3();

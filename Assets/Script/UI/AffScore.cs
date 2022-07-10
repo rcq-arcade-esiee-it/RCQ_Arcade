@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class AffScore : MonoBehaviour
 {
-    //Application.dataPath + "/Script/UI/" + "score_jeu_un.txt"
-    public TextMeshProUGUI txt_score2;
+    public TextMeshProUGUI txt_score2; // le text pour afficher les scores
     private PlayerActions _playerActions;
 
     private void Awake()
@@ -30,6 +29,7 @@ public class AffScore : MonoBehaviour
                 break;
             // on affiche la ligne
 
+            //le if permet simplement de mettre un retour chariot sur toutes les lignes sauf à la première
             if (varTemp == 1)
             {
                 txt_score2.text = txt_score2.text + '\n' + line;
@@ -41,7 +41,7 @@ public class AffScore : MonoBehaviour
             }
         }
 
-        reader.Close();
+        reader.Close(); //on ferme la lecture du fichier
     }
 
     private void Update()

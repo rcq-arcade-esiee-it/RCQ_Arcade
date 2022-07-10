@@ -12,6 +12,12 @@ public class FirstGameManager : MonoBehaviour
     // instance unique de l'objet FirstGameManager
     public static FirstGameManager instance;
 
+    public GameObject gameManagerPrefab;
+    public GameObject rugbyBallPrefab;
+    public GameObject bombPrefab;
+    public GameObject mainCanvasPrefab;
+    public GameObject GoldBall;
+
     // variables pour effectuer des tests
     public static bool startEnabled = true;
     public static bool updateEnabled = true;
@@ -29,10 +35,7 @@ public class FirstGameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject player2Prefab;
 
-    public GameObject gameManagerPrefab;
-    public GameObject rugbyBallPrefab;
-    public GameObject bombPrefab;
-    public GameObject mainCanvasPrefab;
+
 
     public int scorePlayer1;
     public int scorePlayer2;
@@ -40,6 +43,7 @@ public class FirstGameManager : MonoBehaviour
     public bool partyFinished;
     public bool stauntPlayer1;
     public bool stauntPlayer2;
+    private int randomvar = 0;
 
     public float time;
     [HideInInspector] public float ballSpawnDelay = 1.0f;
@@ -81,7 +85,21 @@ public class FirstGameManager : MonoBehaviour
         {
             if (time <= 25) rugbyBallPrefab.GetComponentInChildren<Rigidbody2D>().gravityScale = 900000000000;
             UpdateTimers();
-            if (ballSpawnTimer <= 0.0f && ballsEnabled && !rugbyBallPrefab.scene.IsValid()) SpawnRugbyBall();
+            if (ballSpawnTimer <= 0.0f && ballsEnabled && !rugbyBallPrefab.scene.IsValid())
+            {
+                // on fait un test sur 100. Si le resultat est supérieur à 10, on fait apparaitre une balle normal, sinon c'est une balle dorée qui donne + 10Points
+                randomvar = Random.Range(0, 100); 
+                if(randomvar >= 10)
+                {
+                    SpawnRugbyBall();
+                }
+                else
+                {
+                    SpawnGoldBall();
+                }
+                Debug.Log(randomvar);
+            }
+                
             if (Random.Range(1, 2500) < 4) SpawnBomb();
         }
         else
@@ -198,11 +216,33 @@ public class FirstGameManager : MonoBehaviour
 
         ballSpawnTimer = ballSpawnDelay;
     }
+    public void SpawnGoldBall()
+    {
+        BallController ball;
+        if (Camera.main != null)
+        {
+            // Position calculé au hasard par rapport au positionnement de la caméra
+            Vector2 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector2(
+                Random.Range(-0f, 1f),
+                1f));
+            ball = Instantiate(GoldBall, spawnPosition
+                ,
+                Quaternion.identity).GetComponentInChildren<BallController>();
+        }
+
+        else
+        {
+            ball = Instantiate(GoldBall, Vector2.zero, Quaternion.identity).GetComponent<BallController>();
+        }
+
+
+        ballSpawnTimer = ballSpawnDelay;
+    }
 
     /// <summary>Cette méthode instancie des bombes aléatoirement sur le terrain </summary>
     public void SpawnBomb()
     {
-        BombController bomb;
+        FootballController bomb;
 
         Vector2 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector2(
             Random.Range(-0f, 1f),
@@ -210,10 +250,10 @@ public class FirstGameManager : MonoBehaviour
         if (Camera.main != null)
             bomb = Instantiate(bombPrefab, spawnPosition
                 ,
-                Quaternion.identity).GetComponentInChildren<BombController>();
+                Quaternion.identity).GetComponentInChildren<FootballController>();
 
         else
-            bomb = Instantiate(bombPrefab, Vector2.zero, Quaternion.identity).GetComponent<BombController>();
+            bomb = Instantiate(bombPrefab, Vector2.zero, Quaternion.identity).GetComponent<FootballController>();
 
 
         ballSpawnTimer = ballSpawnDelay;

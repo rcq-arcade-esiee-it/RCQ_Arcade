@@ -15,10 +15,12 @@ public class FFirstGameManagerUTest : InputTestFixture
 {
     // Initialisation des composant prefab
     public GameObject bombPrefab;
+
     private GameObject firstGameManagerPrefab;
     private string firstGameScenePath;
     private GameManager gameManager;
     private GameObject gameManagerPrefab;
+    public GameObject goldBallPrefab;
     private Keyboard keyboard;
 
     // Variables d'environnement de test
@@ -55,7 +57,8 @@ public class FFirstGameManagerUTest : InputTestFixture
             .GetComponent<TestsReferences>().player2Prefab;
         rugbyBallPrefab = ((GameObject)Resources.Load("TestsReferences", typeof(GameObject)))
             .GetComponent<TestsReferences>().rugbyBallPrefab;
-
+        goldBallPrefab = ((GameObject)Resources.Load("TestsReferences", typeof(GameObject)))
+            .GetComponent<TestsReferences>().goldBallPrefab;
         bombPrefab = ((GameObject)Resources.Load("TestsReferences", typeof(GameObject)))
             .GetComponent<TestsReferences>().bombPrefab;
         mainCanvasPrefab = ((GameObject)Resources.Load("TestsReferences", typeof(GameObject)))
@@ -114,11 +117,13 @@ public class FFirstGameManagerUTest : InputTestFixture
         yield return null;
 
         var balls = Object.FindObjectsOfType<BallController>();
+        yield return new WaitForSeconds(2);
+
         Assert.IsTrue(balls.Length > 0);
     }
 
     [UnityTest]
-    public IEnumerator _04_FirstGameManagerScoreIsIncreasedAfterBallAreTuched()
+    public IEnumerator _04_FirstGameManagerScoreIsIncreasedAfterBallAreTouched()
     {
         ClearScene();
         Object.Instantiate(firstGameManagerPrefab);
@@ -136,7 +141,29 @@ public class FFirstGameManagerUTest : InputTestFixture
     }
 
     [UnityTest]
-    public IEnumerator _05_FirstGameManagerPlayerIsStauntAfterTouchedByBomb()
+    public IEnumerator _05_FirstGameManagerPlayerAsBonusAfterGoldBallTouched()
+    {
+        ClearScene();
+        Object.Instantiate(firstGameManagerPrefab);
+
+        yield return null;
+        var score = FirstGameManager.instance.scorePlayer1;
+
+        var goldBall = Object.Instantiate(goldBallPrefab, Vector3.zero, Quaternion.identity)
+            .GetComponent<FootballController>();
+
+
+        yield return new WaitForSeconds(2);
+
+        Assert.IsTrue(score != FirstGameManager.instance.scorePlayer1);
+
+
+        yield return null;
+    }
+
+
+    [UnityTest]
+    public IEnumerator _06_FirstGameManagerPlayerIsStauntAfterTouchedByBomb()
     {
         ClearScene();
         Object.Instantiate(firstGameManagerPrefab);
@@ -144,20 +171,17 @@ public class FFirstGameManagerUTest : InputTestFixture
         yield return null;
 
         var bomb = Object.Instantiate(bombPrefab, Vector3.zero, Quaternion.identity)
-            .GetComponent<BombController>();
+            .GetComponent<FootballController>();
 
         yield return new WaitForSeconds(3);
 
         Assert.IsFalse(FirstGameManager.instance.stauntPlayer1);
 
-        Assert.IsTrue(FirstGameManager.instance.scorePlayer1 < 1);
-
-
         yield return null;
     }
 
     [UnityTest]
-    public IEnumerator _06_FirstGameManagerPlayerWinIfScoreIs15()
+    public IEnumerator _07_FirstGameManagerPlayerWinIfScoreIs15()
     {
         LogAssert.ignoreFailingMessages = true;
 
@@ -180,7 +204,7 @@ public class FFirstGameManagerUTest : InputTestFixture
     }
 
     [UnityTest]
-    public IEnumerator _07_FirstGameManagerReturnLoseIfScoreIsLessThan15()
+    public IEnumerator _08_FirstGameManagerReturnLoseIfScoreIsLessThan15()
     {
         LogAssert.ignoreFailingMessages = true;
 
@@ -214,7 +238,7 @@ public class FFirstGameManagerUTest : InputTestFixture
     }
 
     [UnityTest]
-    public IEnumerator _08_FirstGameManagerReturnWithTwoPlayers()
+    public IEnumerator _09_FirstGameManagerReturnWithTwoPlayers()
     {
         LogAssert.ignoreFailingMessages = true;
 
@@ -236,7 +260,7 @@ public class FFirstGameManagerUTest : InputTestFixture
     }
 
     [UnityTest]
-    public IEnumerator _09_FirstGameManagerPlayer1WinIfScoreIsMoreThanPlayer2()
+    public IEnumerator _10_FirstGameManagerPlayer1WinIfScoreIsMoreThanPlayer2()
     {
         LogAssert.ignoreFailingMessages = true;
 
@@ -246,7 +270,7 @@ public class FFirstGameManagerUTest : InputTestFixture
         yield return new WaitForSecondsRealtime(1);
 
         var bomb = Object.Instantiate(bombPrefab, new Vector2(3230, 363), Quaternion.identity)
-            .GetComponent<BombController>();
+            .GetComponent<FootballController>();
 
         yield return new WaitForSeconds(3);
 
@@ -265,7 +289,7 @@ public class FFirstGameManagerUTest : InputTestFixture
     }
 
     [UnityTest]
-    public IEnumerator _10_FirstGameManagerPlayer2WinIfScoreIsMoreThanPlayer1()
+    public IEnumerator _11_FirstGameManagerPlayer2WinIfScoreIsMoreThanPlayer1()
     {
         LogAssert.ignoreFailingMessages = true;
 

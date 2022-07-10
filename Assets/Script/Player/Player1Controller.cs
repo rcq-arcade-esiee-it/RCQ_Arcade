@@ -48,7 +48,7 @@ public class Player1Controller : Player
         Collider2D.enabled = !Collider2D.enabled;
         Animator.SetBool("staunt", true);
         Speed = 0;
-        yield return new WaitForSeconds(2); //waits 1 seconds
+        yield return new WaitForSeconds(1); //waits 1 seconds
         Speed = 5000;
         Animator.SetBool("staunt", false);
         Collider2D.enabled = !Collider2D.enabled;
