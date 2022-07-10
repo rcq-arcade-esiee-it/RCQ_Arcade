@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using UnityEngine;
 
+[ExcludeFromCodeCoverage]
 public class SpriteSwap : MonoBehaviour
 {
     // The name of the sprite sheet to use
@@ -15,6 +17,12 @@ public class SpriteSwap : MonoBehaviour
 
     // The dictionary containing all the sliced up sprites in the sprite sheet
     private Dictionary<string, Sprite> spriteSheet;
+
+    public string SpriteSheetNameAccesser
+    {
+        get => SpriteSheetName;
+        set => SpriteSheetName = value;
+    }
 
     // Use this for initialization
     private void Start()

@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5000
+  SpriteSwap: {fileID: 3877280840932480680}
 --- !u!114 &3877280840932480680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.4708414}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -103.73993, y: 121}
+  m_AnchoredPosition: {x: -221, y: 121}
   m_SizeDelta: {x: 207.48, y: 93.5066}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8182531983472689097
@@ -550,7 +551,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 3.239876, w: -63.94468}
+  m_margin: {x: 0, y: 0, z: -239.94518, w: -147.20322}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

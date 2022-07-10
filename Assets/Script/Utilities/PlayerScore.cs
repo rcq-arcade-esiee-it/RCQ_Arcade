@@ -61,10 +61,12 @@ public class PlayerScore
         set => score = value;
     }
 
-    public static void saveScoreToCurrentGame(string gameName)
+    public static void saveScoreToCurrentGame(string gameName, string playerScore)
     {
-        if (player1Name.Length > 0) scores.Add(new PlayerScore(player1Name, score1));
-        if (player2Name.Length > 0)
+        Debug.Log(playerScore);
+
+        if (playerScore == "Player1") scores.Add(new PlayerScore(player1Name, score1));
+        else
             scores.Add(new PlayerScore(player2Name, score2));
 
 
@@ -89,17 +91,11 @@ public class PlayerScore
             foreach (var player in scores) sw.WriteLine(player.Name + " " + player.Score);
         }
 
-
         Erase();
     }
 
     private static void Erase()
     {
         scores = new List<PlayerScore>();
-
-        player1Name = "";
-        player2Name = "";
-        score1 = 0;
-        score2 = 0;
     }
 }
