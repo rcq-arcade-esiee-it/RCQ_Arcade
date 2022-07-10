@@ -1,23 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player2Controller : Player
 {
-    
-
-    private void OnEnable()
+    private void Start()
     {
-        PlayerActions.Player2_Map.Enable();
+        ChangeTeams(GameManager.instance.choixequipej2);
     }
-    /// <summary>Cette méthode désactive le controle du joueur  </summary>
 
-    private void OnDisable()
-    {
-        PlayerActions.Player2_Map.Disable();
-    }
-    
     /// <summary>Cette méthode permet de faire bouger le joueur </summary>
     private void FixedUpdate()
     {
@@ -32,16 +22,26 @@ public class Player2Controller : Player
         {
             Animator.SetBool("moving", false);
         }
-        
-            
-        if (FirstGameManager.instance.partyFinished) StartCoroutine(Winner());
-        
-        if (FirstGameManager.instance.stauntPlayer2)StartCoroutine(Staunt());
-            
-    }
-    /// <summary>Cette méthode active le controle du joueur  </summary>
 
-    public  IEnumerator Staunt()
+
+        if (FirstGameManager.instance.partyFinished) StartCoroutine(Winner());
+
+        if (FirstGameManager.instance.stauntPlayer2) StartCoroutine(Staunt());
+    }
+
+    private void OnEnable()
+    {
+        PlayerActions.Player2_Map.Enable();
+    }
+
+    /// <summary>Cette méthode désactive le controle du joueur  </summary>
+    private void OnDisable()
+    {
+        PlayerActions.Player2_Map.Disable();
+    }
+
+    /// <summary>Cette méthode active le controle du joueur  </summary>
+    public IEnumerator Staunt()
     {
         FirstGameManager.instance.scorePlayer2 -= 3;
         FirstGameManager.instance.stauntPlayer2 = false;
@@ -52,6 +52,5 @@ public class Player2Controller : Player
         Speed = 5000;
         Animator.SetBool("staunt", false);
         Collider2D.enabled = !Collider2D.enabled;
-
     }
 }

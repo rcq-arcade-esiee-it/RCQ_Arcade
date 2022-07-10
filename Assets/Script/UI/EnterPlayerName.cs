@@ -69,7 +69,7 @@ public class EnterPlayerName : MonoBehaviour
                 PlayerScore.Player1Name = string.Concat(finalName);
             else
                 PlayerScore.Player2Name = string.Concat(finalName);
-            PlayerScore.saveScoreToCurrentGame(GameManager.gameInfo.GameScene);
+            PlayerScore.saveScoreToCurrentGame(GameManager.gameInfo.GameScene, gameObject.name);
             GameManager.instance.LoadScene("Aff_Score");
         }
 
