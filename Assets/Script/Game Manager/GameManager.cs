@@ -1,13 +1,23 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-/// <summary>Class <c>GameManager</c> représentant la partie interaction entre les interfaces et les joueurs. Singleton qui se détruit si on cherche à l'instancier une nouvelle fois.</summary>
+/// <summary>
+///     Class <c>GameManager</c> représentant la partie interaction entre les interfaces et les joueurs. Singleton qui
+///     se détruit si on cherche à l'instancier une nouvelle fois.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     // instance unique de l'objet GameManager
     public static GameManager instance;
+    public static bool twoPlayers;
+
+    public static GameInfo gameInfo;
+
     // prefabs utilisées pour le gameManager
     public GameObject faderObj;
     public Image faderImg;
@@ -17,15 +27,16 @@ public class GameManager : MonoBehaviour
 
     private readonly Color fadeTransparency = new(0, 0, 0, .04f);
     private AsyncOperation async;
-    private bool isReturning; 
-    public static bool twoPlayers = false; 
-    public static  GameInfo gameInfo;
+
+    private bool idle;
+    private bool isReturning;
+
+    private DateTime time;
 
     // Getter et Setter retournant et créant nle nom de l'écran courant
     public string CurrentSceneName { get; set; }
 
     /// <summary>Cette méthode instancie une seule fois la classe à son activation </summary>
-
     private void Awake()
     {
         if (instance == null)
@@ -34,7 +45,11 @@ public class GameManager : MonoBehaviour
             instance = GetComponent<GameManager>();
             SceneManager.sceneLoaded += OnLevelFinishedLoading;
             twoPlayers = false;
+            time = DateTime.Now;
 
+            InputSystem.onAnyButtonPress.Call(control =>
+                time = DateTime.Now
+            );
         }
         else
         {
@@ -42,7 +57,17 @@ public class GameManager : MonoBehaviour
         }
 
         Cursor.visible = true;
-     
+    }
+
+    private void Update()
+    {
+        if (DateTime.Now.Minute - time.Minute >= 5)
+        {
+            LoadScene("MainScreen");
+            DestroyImmediate(gameObject);
+        }
+
+        ;
     }
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -55,13 +80,14 @@ public class GameManager : MonoBehaviour
         instance.StartCoroutine(Load(sceneName));
         ActivateScene();
     }
+
     public void LoadSceneWithParameters(string parameters)
     {
-        GameManager.gameInfo = GameInfo.CreateFromJSON(parameters);
+        gameInfo = GameInfo.CreateFromJSON(parameters);
         Debug.Log(gameInfo.Description);
         LoadScene(gameInfo.GameInfoScene);
-
     }
+
     private IEnumerator Load(string sceneName)
     {
         async = SceneManager.LoadSceneAsync(sceneName);
@@ -74,5 +100,4 @@ public class GameManager : MonoBehaviour
     {
         async.allowSceneActivation = true;
     }
-    
 }
