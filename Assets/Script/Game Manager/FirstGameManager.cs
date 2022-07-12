@@ -171,7 +171,6 @@ public class FirstGameManager : MonoBehaviour
         }
 
  
-    }
 
     /// <summary>Cette méthode permet d'initialiser plusieurs paramètres de tests </summary>
     public static void InitializeTestingEnvironment(bool start, bool update, bool balls, bool test, bool twoPlayer)
