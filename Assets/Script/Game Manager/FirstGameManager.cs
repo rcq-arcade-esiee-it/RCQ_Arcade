@@ -95,7 +95,7 @@ public class FirstGameManager : MonoBehaviour
                 Debug.Log(randomvar);
             }
 
-            if (Random.Range(1, 2500) < 75) SpawnBomb();
+            if (Random.Range(1, 2500) < 15) SpawnBomb();
         }
         else
         {
