@@ -12,7 +12,7 @@ on:
 jobs:
 
   runTests:
-
+    if : startsWith(${{ github.head_ref }}, 'refs/heads/final/') != true
     name: Run Tests
     runs-on: ubuntu-latest
 
