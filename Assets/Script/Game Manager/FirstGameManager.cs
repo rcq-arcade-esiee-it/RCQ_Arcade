@@ -164,10 +164,10 @@ public class FirstGameManager : MonoBehaviour
 
             PlayerScore.Score1 = scorePlayer1;
             PlayerScore.Score2 = scorePlayer2;
-
-
-            GameManager.instance.LoadScene("Score");
+            
         }
+        GameManager.instance.LoadScene("Score");
+
     }
 
 
