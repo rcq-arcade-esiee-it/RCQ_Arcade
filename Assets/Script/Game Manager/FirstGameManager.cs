@@ -166,31 +166,11 @@ public class FirstGameManager : MonoBehaviour
             PlayerScore.Score2 = scorePlayer2;
             Debug.Log(PlayerScore.Score2 = scorePlayer2
             );
+
+            GameManager.instance.LoadScene("Score");
         }
 
-        var fileName = Application.dataPath + "/Resources/Saves/" + "score_" + GameManager.gameInfo.GameScene + ".txt";
-        // Si le fichier n'existe pas, il est crée
-        using (var sr = new StreamReader(fileName))
-        {
-            var idx = 0;
-            string line;
-            while ((line = sr.ReadLine()) != null)
-                // Si le score de l'un des joueurs est inférieur aux score dans le fichier, alors l'écran Score ne s'affiche pas
-                if (line.Length > 0 && idx <= 5)
-                {
-                    ++idx;
-                    if (PlayerScore.Score1 > short.Parse(line.Split(" ")[1]) ||
-                        (GameManager.twoPlayers && PlayerScore.Score2 > short.Parse(line.Split(" ")[1])))
-                    {
-                        GameManager.instance.LoadScene("Score");
-                        DestroyImmediate(gameObject);
-                    }
-                }
-        }
-
-        GameManager.instance.LoadScene("Aff_Score");
-        DestroyImmediate(gameObject);
-    }
+ 
 
     /// <summary>Cette méthode permet d'initialiser plusieurs paramètres de tests </summary>
     public static void InitializeTestingEnvironment(bool start, bool update, bool balls, bool test, bool twoPlayer)
