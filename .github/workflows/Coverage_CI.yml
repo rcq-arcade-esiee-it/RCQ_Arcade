@@ -12,8 +12,8 @@ on:
 jobs:
 
   runTests:
-    if : startsWith(${{ github.head_ref }}, 'refs/heads/final/') != true
     name: Run Tests
+    if: ${{ !startsWith(github.head_ref, 'refs/heads/final/') }}  ✅
     runs-on: ubuntu-latest
 
     steps:
