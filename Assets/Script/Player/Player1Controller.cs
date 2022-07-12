@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>Class <c>Player</c> représentant les mouvements et évenements des joueurs.</summary>
 public class Player1Controller : Player
@@ -11,16 +12,22 @@ public class Player1Controller : Player
 
     private void FixedUpdate()
     {
+
+        if ((Joystick.current.name == PlayerJoystick.FirstJoystick)
+            )
+        {
         MoveInput = PlayerActions.Player_Map.Movement.ReadValue<Vector2>();
-        Rigidbody2D.velocity = MoveInput * Speed;
-        if (MoveInput != Vector2.zero)
-        {
-            Animator.SetFloat("moveX", MoveInput.x);
-            Animator.SetBool("moving", true);
-        }
-        else
-        {
-            Animator.SetBool("moving", false);
+
+            Rigidbody2D.velocity = MoveInput * Speed;
+            if (MoveInput != Vector2.zero)
+            {
+                Animator.SetFloat("moveX", MoveInput.x);
+                Animator.SetBool("moving", true);
+            }
+            else
+            {
+                Animator.SetBool("moving", false);
+            }
         }
 
 
