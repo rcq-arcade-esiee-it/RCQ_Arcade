@@ -23,17 +23,16 @@ public class TestsReferences : MonoBehaviour
     public Object scoreNameScene;
     public Object scoreViewScene;
 
-    
-
     #endregion
 
     #region Collectibles
 
     public GameObject rugbyBallPrefab;
     public GameObject bombPrefab;
+    public GameObject goldBallPrefab;
 
     #endregion
-    
+
     #region Utilities
 
     public GameObject teleportPrefab;

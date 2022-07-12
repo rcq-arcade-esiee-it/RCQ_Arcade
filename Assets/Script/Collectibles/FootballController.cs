@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>Class <c>BombController</c> qui gère les intéractions  d'une bomb avec un Joueur.</summary>
-public class BombController : MonoBehaviour
+public class FootballController : MonoBehaviour
 {
     private Animator animator;
 
@@ -11,8 +11,8 @@ public class BombController : MonoBehaviour
     private void Start()
     {
         // Animation de la bombe 
-        animator = GetComponent<Animator>();
-        animator.SetBool("collide", false);
+       // animator = GetComponent<Animator>();
+        //animator.SetBool("collide", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -32,10 +32,10 @@ public class BombController : MonoBehaviour
             ? FirstGameManager.instance.stauntPlayer1 = true
             : FirstGameManager.instance.stauntPlayer2 = true;
 
-        animator.SetBool("collide", true);
+     //   animator.SetBool("collide", true);
 
         //play your sound
-        yield return new WaitForSeconds(0.7f); //waits 1 seconds
+        yield return null; //waits 1 seconds
         Destroy(gameObject.transform.parent.gameObject);
     }
 }

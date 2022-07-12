@@ -3,39 +3,39 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 [ExcludeFromCodeCoverage]
-internal class Shutdown
+class Shutdown
 {
-    private static void Main()
+    static void Main()
     {
-        // lets say we want to run this command:    
-        //  t=$(echo 'this is a test'); echo "$t" | grep -o 'is a'
+       //création de la commande que l'o nsouhaite lancer
         var output = ExecuteBashCommand("shutdown now");
 
-        // output the result
+        //on écrit le résultat dans la console c#
         Console.WriteLine(output);
     }
 
-    private static string ExecuteBashCommand(string command)
+    static string ExecuteBashCommand(string command)
     {
-        // according to: https://stackoverflow.com/a/15262019/637142
-        // thans to this we will pass everything as one command
-        command = command.Replace("\"", "\"\"");
+        // en accord avec : https://stackoverflow.com/a/15262019/637142
+        // grâce à cela, nous passerons tout en une seule commande
+        command = command.Replace("\"","\"\"");
 
+        //on crée un nouveau processus qui va lancer le terminal de commande et executer la commande.
         var proc = new Process
         {
-            StartInfo = new ProcessStartInfo
+            StartInfo = new ProcessStartInfo 
             {
                 FileName = "/bin/bash",
-                Arguments = "-c \"" + command + "\"",
+                Arguments = "-c \""+ command + "\"",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 CreateNoWindow = true
             }
         };
 
-        proc.Start();
-        proc.WaitForExit();
+        proc.Start(); //on lance le processus
+        proc.WaitForExit(); // on attend que le processus ce termine
 
-        return proc.StandardOutput.ReadToEnd();
+        return proc.StandardOutput.ReadToEnd(); //et on lit le resultat
     }
 }

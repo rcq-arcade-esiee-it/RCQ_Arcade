@@ -270,6 +270,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -4359201160793774831, guid: 3b7acc5cb0a4703439034df30fa996d2, type: 3}
+      propertyPath: GoldBall
+      value: 
+      objectReference: {fileID: 8826489472049016286, guid: 909c1aff98a536cf89a140914f03c79d, type: 3}
+    - target: {fileID: -4359201160793774831, guid: 3b7acc5cb0a4703439034df30fa996d2, type: 3}
       propertyPath: bombPrefab
       value: 
       objectReference: {fileID: 2326428724471007433, guid: c45a4efdb4dccb84096fbd1dcc2878ec, type: 3}
@@ -991,8 +995,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1416555198794914561, guid: dafa790871d87204fa0738b06335a3c0, type: 3}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1416555198794914561, guid: dafa790871d87204fa0738b06335a3c0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a434f2737a3c9b574807656ac9a0d98d, type: 3}
     - target: {fileID: 2583364048873570886, guid: dafa790871d87204fa0738b06335a3c0, type: 3}
       propertyPath: m_IsActive
       value: 0

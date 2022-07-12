@@ -58,5 +58,6 @@ MonoBehaviour:
   scoreViewScene: {fileID: 102900000, guid: cedd2b3d5fde555419e5277f911542ea, type: 3}
   rugbyBallPrefab: {fileID: 8826489472049016286, guid: fb592c51e92276a459dc808ff4006982, type: 3}
   bombPrefab: {fileID: 2326428724471007433, guid: c45a4efdb4dccb84096fbd1dcc2878ec, type: 3}
+  goldBallPrefab: {fileID: 8826489472049016286, guid: 909c1aff98a536cf89a140914f03c79d, type: 3}
   teleportPrefab: {fileID: 2772339904174747749, guid: 135ecfe52d26e80478fab9289e5893be, type: 3}
   teleportTargetPrefab: {fileID: 4514560059831906814, guid: 76ddabe00a937134689319ada928cbb7, type: 3}

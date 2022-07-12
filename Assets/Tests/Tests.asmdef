@@ -9,7 +9,9 @@
         "Unity.TextMeshPro.Tests",
         "Unity.TextMeshPro.Editor.Tests",
         "Unity.TextMeshPro",
-        "RCQ_Arcade"
+        "RCQ_Arcade",
+        "UnityEngine.UI",
+        "UnityEditor.UI"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

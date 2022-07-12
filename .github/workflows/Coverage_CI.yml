@@ -9,15 +9,15 @@ on:
     branches:
       - main
 
+
 jobs:
 
   runTests:
-
+    if: startsWith(github.head_ref, 'final/') == false
     name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
