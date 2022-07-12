@@ -8,18 +8,16 @@ on:
   pull_request: 
     branches:
       - main
-        branches-ignore:
-                  - master
+
 
 jobs:
 
   runTests:
-
+    if: startsWith(github.head_ref, 'final/') == false
     name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
-        if: startsWith(github.head_ref, 'final/') == false
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
