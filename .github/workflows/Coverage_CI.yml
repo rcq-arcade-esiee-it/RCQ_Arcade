@@ -12,8 +12,9 @@ on:
 jobs:
 
   runTests:
-    name: Run Tests
     if: ${{ !startsWith(github.head_ref, 'final/') }}  ✅
+
+    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
