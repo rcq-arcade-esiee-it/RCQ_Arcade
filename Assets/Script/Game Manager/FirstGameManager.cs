@@ -164,13 +164,13 @@ public class FirstGameManager : MonoBehaviour
 
             PlayerScore.Score1 = scorePlayer1;
             PlayerScore.Score2 = scorePlayer2;
-            Debug.Log(PlayerScore.Score2 = scorePlayer2
-            );
+
 
             GameManager.instance.LoadScene("Score");
         }
+    }
 
- 
+
 
     /// <summary>Cette méthode permet d'initialiser plusieurs paramètres de tests </summary>
     public static void InitializeTestingEnvironment(bool start, bool update, bool balls, bool test, bool twoPlayer)
