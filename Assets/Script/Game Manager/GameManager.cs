@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (DateTime.Now.Minute - time.Minute >= 5)
+        if (DateTime.Now.Minute - time.Minute >= 3)
         {
             LoadScene("MainScreen");
             DestroyImmediate(gameObject);
