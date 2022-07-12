@@ -1,9 +1,3 @@
- [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
- 
 
 ## RCQ GAME
 <p><img src=".github/pictures/RCQ-LOGO.png" align="right"
@@ -28,7 +22,7 @@ Pour installer le code source du jeu, utiliser cette commande dans un git Bash (
    ```
 Ou vous pouvez le télécharger directement en cliquant sur le bouton vert Code, puis Download ZIP
 
-Une fois le projet téléchargé, assurez vous d'avoir la bonne version du logiciel Unity 
+Une fois le projet téléchargé, assurez-vous d'avoir la bonne version du logiciel Unity 
   ```sh
 2021.3.0f1   
 ```
