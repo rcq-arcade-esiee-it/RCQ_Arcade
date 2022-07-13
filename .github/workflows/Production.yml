@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - chore/version_final
+      - chore/version_finale
 
 jobs:
 
