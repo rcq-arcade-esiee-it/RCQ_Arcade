@@ -61,6 +61,14 @@ public class PlayerScore
         set => score = value;
     }
 
+    public static void resetCurrentScore(string gameName)
+    {
+        var fileName = Application.dataPath + "/Resources/Saves/" + "score_" + gameName + ".txt";
+
+        File.WriteAllText(fileName, string.Empty);
+
+    }
+
     public static void saveScoreToCurrentGame(string gameName, string playerScore)
     {
         Debug.Log(playerScore);

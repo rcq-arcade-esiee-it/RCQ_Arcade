@@ -5,13 +5,14 @@ on:
   push:
     branches:
       - main
+      - chore/version_finale
 
 jobs:
 
   build:
     name: Build my project ✨
     runs-on: ubuntu-latest
-    if : startsWith(${{ github.head_ref }}, 'refs/heads/chore/')
+    if: startsWith(github.head_ref, 'addon/')
 
     steps:
       - name: Get repo

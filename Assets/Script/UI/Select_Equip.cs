@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Select_Equip : MonoBehaviour
@@ -42,14 +43,14 @@ public class Select_Equip : MonoBehaviour
 
     private void Update()
     {
-        if (_playerActions.Player_Map.ChooseLeft.WasPressedThisFrame())
+        if (_playerActions.Player_Map.ChooseLeft.WasPressedThisFrame()  && Joystick.current.name == PlayerJoystick.FirstJoystick)
         {
             click++;
             Debug.Log("Press gauche");
             Debug.Log("click = " + click);
             Majj1();
         }
-        else if (_playerActions.Player_Map.ChooseRight.WasPressedThisFrame())
+        else if (_playerActions.Player_Map.ChooseRight.WasPressedThisFrame() && Joystick.current.name == PlayerJoystick.FirstJoystick)
         {
             click--;
             Debug.Log("Press droite");
@@ -59,13 +60,13 @@ public class Select_Equip : MonoBehaviour
 
         if (GameManager.twoPlayers)
         {
-            if (_playerActions.Player2_Map.ChooseLeft.WasPressedThisFrame())
+            if (_playerActions.Player2_Map.ChooseLeft.WasPressedThisFrame() && Joystick.current.name == PlayerJoystick.SecondJoystick)
             {
                 Debug.Log("Press gauche");
                 clickj2++;
                 Majj2();
             }
-            else if (_playerActions.Player2_Map.ChooseRight.WasPressedThisFrame())
+            else if (_playerActions.Player2_Map.ChooseRight.WasPressedThisFrame()&& Joystick.current.name == PlayerJoystick.SecondJoystick)
             {
                 clickj2--;
                 Debug.Log("Press droite");
