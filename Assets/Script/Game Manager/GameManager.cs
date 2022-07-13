@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour
     private bool isReturning;
 
     private DateTime time;
-
+    private PlayerActions playerActions;
+    
     // Getter et Setter retournant et créant nle nom de l'écran courant
     public string CurrentSceneName { get; set; }
 
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
             InputSystem.onAnyButtonPress.Call(control =>
                 time = DateTime.Now
             );
+            playerActions = new PlayerActions();
         }
         else
         {
@@ -67,7 +69,10 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(gameObject);
         }
 
-        ;
+        if (playerActions.UI.Shutdown.WasPressedThisFrame()) Shutdown.Main();
+        if (playerActions.UI.ResetScore.WasPressedThisFrame()) PlayerScore.resetCurrentScore("Game1");
+
+        
     }
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -96,6 +101,13 @@ public class GameManager : MonoBehaviour
         isReturning = false;
     }
 
+    private void OnEnable()
+    {
+playerActions.UI.Enable();    }
+
+    private void OnDisable()
+    {
+        playerActions.UI.Disable();    }
     public void ActivateScene()
     {
         async.allowSceneActivation = true;
