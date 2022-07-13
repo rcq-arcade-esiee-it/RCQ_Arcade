@@ -12,7 +12,6 @@ jobs:
   build:
     name: Build my project ✨
     runs-on: ubuntu-latest
-    if: startsWith(github.head_ref, 'addon/')
 
     steps:
       - name: Get repo
