@@ -2,10 +2,10 @@ name: CI BUILDER
 
 on: 
   # Replace with your main branch if needed
-  push:
-    branches:
-      - main
 
+  pull_request: 
+      branches:
+       - main
 jobs:
 
   build:
