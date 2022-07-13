@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 [ExcludeFromCodeCoverage]
 class Shutdown
 {
-    static void Main()
+     public static void Main()
     {
        //création de la commande que l'o nsouhaite lancer
         var output = ExecuteBashCommand("shutdown now");

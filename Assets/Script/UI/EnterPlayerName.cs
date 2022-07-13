@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EnterPlayerName : MonoBehaviour
 {
@@ -41,8 +42,10 @@ public class EnterPlayerName : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (_playerActions.Player_Map.ChooseRight.WasPressedThisFrame() ||
-            _playerActions.Player2_Map.ChooseRight.WasPressedThisFrame())
+        if ((_playerActions.Player_Map.ChooseRight.WasPressedThisFrame() &&
+             Joystick.current.name == PlayerJoystick.FirstJoystick) ||
+            (_playerActions.Player2_Map.ChooseRight.WasPressedThisFrame() &&
+             Joystick.current.name == PlayerJoystick.SecondJoystick))
         {
             SelectLettersPolygon(0);
 
@@ -51,8 +54,10 @@ public class EnterPlayerName : MonoBehaviour
                 indexScore = 0;
             SelectLettersPolygon(1);
         }
-        else if (_playerActions.Player_Map.ChooseLeft.WasPressedThisFrame() ||
-                 _playerActions.Player2_Map.ChooseLeft.WasPressedThisFrame())
+        else if ((_playerActions.Player_Map.ChooseLeft.WasPressedThisFrame() &&
+                  Joystick.current.name == PlayerJoystick.FirstJoystick) ||
+                 (_playerActions.Player2_Map.ChooseLeft.WasPressedThisFrame() &&
+                  Joystick.current.name == PlayerJoystick.SecondJoystick))
         {
             SelectLettersPolygon(0);
 
@@ -100,8 +105,10 @@ public class EnterPlayerName : MonoBehaviour
 
     private IEnumerator chooseLetter(TextMeshProUGUI letter)
     {
-        if (_playerActions.Player_Map.ScoreDown.WasPressedThisFrame() ||
-            _playerActions.Player2_Map.ScoreDown.WasPressedThisFrame())
+        if ((_playerActions.Player_Map.ScoreDown.WasPressedThisFrame() &&
+             Joystick.current.name == PlayerJoystick.FirstJoystick) ||
+            (_playerActions.Player2_Map.ScoreDown.WasPressedThisFrame() &&
+             Joystick.current.name == PlayerJoystick.SecondJoystick))
         {
             indexLetter += 1;
             if (indexLetter > letters.Length - 1)
@@ -112,8 +119,11 @@ public class EnterPlayerName : MonoBehaviour
 
             finalName[indexScore] = letters[indexLetter];
         }
-        else if (_playerActions.Player_Map.ScoreUp.WasPressedThisFrame() ||
-                 _playerActions.Player2_Map.ScoreUp.WasPressedThisFrame())
+        else if ((_playerActions.Player_Map.ScoreUp.WasPressedThisFrame() && Joystick.current != null &&
+                  Joystick.current.name ==
+                  PlayerJoystick.FirstJoystick) ||
+                 (_playerActions.Player2_Map.ScoreUp.WasPressedThisFrame() &&
+                  Joystick.current.name == PlayerJoystick.SecondJoystick))
         {
             indexLetter -= 1;
             if (indexLetter < 0)

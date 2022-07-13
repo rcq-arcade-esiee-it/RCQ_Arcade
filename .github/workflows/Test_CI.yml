@@ -11,8 +11,7 @@ jobs:
   build:
     name: Build my project ✨
     runs-on: ubuntu-latest
-    if : startsWith(${{ github.head_ref }}, 'refs/heads/chore/') != true
-
+    if: startsWith(github.head_ref, 'chore/') == false
     steps:
       - name: Get repo
 

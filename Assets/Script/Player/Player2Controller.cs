@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player2Controller : Player
 {
@@ -12,17 +13,20 @@ public class Player2Controller : Player
     private void FixedUpdate()
     {
         MoveInput = PlayerActions.Player2_Map.Movement.ReadValue<Vector2>();
-        Rigidbody2D.velocity = MoveInput * Speed;
-        if (MoveInput != Vector2.zero)
-        {
-            Animator.SetFloat("moveX", MoveInput.x);
-            Animator.SetBool("moving", true);
-        }
-        else
-        {
-            Animator.SetBool("moving", false);
-        }
 
+        if ((Joystick.current.name == PlayerJoystick.SecondJoystick) )
+        {
+            Rigidbody2D.velocity = MoveInput * Speed;
+            if (MoveInput != Vector2.zero)
+            {
+                Animator.SetFloat("moveX", MoveInput.x);
+                Animator.SetBool("moving", true);
+            }
+            else
+            {
+                Animator.SetBool("moving", false);
+            }
+        }
 
         if (FirstGameManager.instance.partyFinished) StartCoroutine(Winner());
 
