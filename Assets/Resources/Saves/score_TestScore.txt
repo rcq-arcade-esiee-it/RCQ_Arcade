@@ -1,2 +1,3 @@
 AAA 20
 AAA 0
+AAA -3

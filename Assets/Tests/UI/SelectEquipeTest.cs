@@ -43,7 +43,7 @@ public class ESelectEquipeTest : InputTestFixture
         var maillot3 = GameObject.Find("MainCanvas/TeamsCanvas/Maillot_3").GetComponent<Image>();
         var maillot4 = GameObject.Find("MainCanvas/TeamsCanvas/Maillot_4").GetComponent<Image>();
 
-        Press(keyboard.qKey);
+        Press(keyboard.aKey);
 
         yield return new WaitForSecondsRealtime(2);
         Assert.That(GameManager.instance.choixequipej1 == 1);

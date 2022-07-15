@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     private bool idle;
     private bool isReturning;
 
+    public static bool testEnabled = false;
+
     private DateTime time;
 
     // Getter et Setter retournant et créant nle nom de l'écran courant
@@ -47,7 +49,7 @@ public class GameManager : MonoBehaviour
             twoPlayers = false;
             time = DateTime.Now;
 
-            InputSystem.onAnyButtonPress.Call(control =>
+           if(!testEnabled) InputSystem.onAnyButtonPress.Call(control =>
                 time = DateTime.Now
             );
         }
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (DateTime.Now.Minute - time.Minute >= 3)
+        if(!testEnabled && DateTime.Now.Minute - time.Minute >= 3)
         {
             LoadScene("MainScreen");
             DestroyImmediate(gameObject);
@@ -99,5 +101,11 @@ public class GameManager : MonoBehaviour
     public void ActivateScene()
     {
         async.allowSceneActivation = true;
+    }
+    
+    public static void InitializeTestingEnvironment(bool test)
+    {
+      
+        testEnabled = test;
     }
 }

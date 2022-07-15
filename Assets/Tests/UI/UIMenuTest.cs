@@ -48,6 +48,8 @@ public class CUIMenuTest : InputTestFixture
     [UnityTest]
     public IEnumerator _01_OnSelect_devrait_changer_bouton_selectionne()
     {
+        GameManager.gameInfo = new GameInfo("TitleTest", "descriptionTest", true, "TwoPlayerSelect", "Game1");
+
         gameManager.LoadScene(gameMenuScenePath);
         yield return new WaitForSeconds(2f);
 

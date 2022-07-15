@@ -21,7 +21,6 @@ public class GPlayerScoreITest : InputTestFixture
     public override void Setup()
     {
         base.Setup();
-        GameManager.gameInfo = new GameInfo("TitleTest", "descriptionTest", true, "TwoPlayerTest", "TestScore");
         var scoreNameScene = ((GameObject)Resources.Load("TestsReferences")).GetComponent<TestsReferences>()
             .scoreNameScene;
         var scoreViewScene = ((GameObject)Resources.Load("TestsReferences")).GetComponent<TestsReferences>()
@@ -159,5 +158,7 @@ public class GPlayerScoreITest : InputTestFixture
         Assert.That(sceneName, Is.EqualTo("GameMenu"));
 
         GameManager.gameInfo = null;
+        GameManager.InitializeTestingEnvironment(true);
+
     }
 }

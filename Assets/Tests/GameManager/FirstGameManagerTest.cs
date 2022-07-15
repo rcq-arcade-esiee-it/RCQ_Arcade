@@ -321,5 +321,7 @@ public class FFirstGameManagerUTest : InputTestFixture
 
         Assert.IsTrue(player2.isWinner);
         Assert.IsTrue(!player1.isWinner);
+        FirstGameManager.InitializeTestingEnvironment(false, false, false, false, false);
+
     }
 }

@@ -43,6 +43,7 @@ public class BGameManagerUTest
     [Test]
     public void _01_GameManagerPrefabExists()
     {
+        GameManager.InitializeTestingEnvironment(true);
         Assert.NotNull(gameManagerPrefab);
     }
 
